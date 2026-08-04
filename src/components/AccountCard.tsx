@@ -51,7 +51,7 @@ return (
     {/* Price & Action */}
     <div className="flex items-center justify-between pt-2 border-t border-slate-800">
         <div>
-        <span className="block text-xs text-slate-400">Price</span>
+        <span className="block text-xs text-slate-400">Harga</span>
         <span className="text-lg font-bold text-yellow-400">{price}</span>
         </div>
         <button className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition">

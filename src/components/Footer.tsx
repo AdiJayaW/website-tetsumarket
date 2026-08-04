@@ -12,10 +12,10 @@ return (
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-4">
             <button className="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl text-sm transition">
-            Browse Accounts
+            Cari Akun
             </button>
             <button className="bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3 rounded-xl text-sm transition">
-            Sell Your Account
+            Jual Akun Kamu
             </button>
         </div>
         </div>
