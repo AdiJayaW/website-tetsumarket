@@ -3,23 +3,23 @@ import { ShieldCheck, Zap, Lock, Users } from 'lucide-react';
 const features = [
 {
     icon: ShieldCheck,
-    title: "Perlindungan Langsung",
-    desc: "Setiap transaksi diamankan dengan perlindungan escrow hingga Anda memverifikasi kepemilikan akun."
+    title: "100% Stok Milik Sendiri",
+    desc: "Semua akun adalah milik kami & sudah diverifikasi total. Tanpa penjual pihak ketiga.."
 },
 {
     icon: Zap,
-    title: "Proses Cepat",
-    desc: "Kredensial akun akan dikirim instan segera setelah pembayaran dikonfirmasi."
+    title: "Garansi Anti-Hackback (HB)",
+    desc: "Dilindungi garansi penuh seumur hidup. Karena stok milik kami sendiri, keamanan akun Anda terjamin 100%."
 },
 {
     icon: Lock,
-    title: "Pembayaran Terjamin",
-    desc: "Dukungan beragam metode pembayaran terpercaya dengan enkripsi 256-bit demi keamanan transaksi."
+    title: "Penyerahan Data Instan",
+    desc: "Tanpa menunggu respon penjual lain. Dapatkan data login langsung secara otomatis setelah pembayaran."
 },
 {
     icon: Users,
-    title: "Marketplace Terpercaya",
-    desc: "15.000+ gamer mempercayakan transaksi akun ML mereka di platform terverifikasi kami."
+    title: "Dukungan Amankan Data",
+    desc: "Tim admin kami siap memandu proses ganti email & bind ke data pribadi Anda sampai tuntas."
 }
 ];
 

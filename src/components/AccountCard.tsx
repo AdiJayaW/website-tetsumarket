@@ -22,9 +22,10 @@ return (
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
-    <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md px-2.5 py-1 rounded-md text-xs text-cyan-400 font-medium flex items-center gap-1 border border-slate-700">
-        <ShieldCheck className="w-3.5 h-3.5" /> Verified Seller
-    </div>
+        {/* Badge On Sale */}
+        <div className="absolute top-3 left-3 bg-[#0B0E17]/80 backdrop-blur-md border border-cyan-500/30 px-2.5 py-1 rounded-lg text-xs font-medium text-cyan-400">
+        On Sale
+        </div>
     </div>
 
     {/* Info */}
