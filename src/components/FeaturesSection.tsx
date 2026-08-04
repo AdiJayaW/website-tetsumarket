@@ -7,12 +7,12 @@ const features = [
     desc: "Semua akun adalah milik kami & sudah diverifikasi total. Tanpa penjual pihak ketiga.."
 },
 {
-    icon: Zap,
+    icon: Lock,
     title: "Garansi Anti-Hackback (HB)",
     desc: "Dilindungi garansi penuh seumur hidup. Karena stok milik kami sendiri, keamanan akun Anda terjamin 100%."
 },
 {
-    icon: Lock,
+    icon: Zap,
     title: "Penyerahan Data Instan",
     desc: "Tanpa menunggu respon penjual lain. Dapatkan data login langsung secara otomatis setelah pembayaran."
 },
