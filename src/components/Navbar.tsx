@@ -17,8 +17,8 @@ return (
 
         {/* Links Navigasi */}
         <div className="hidden md:flex items-center gap-10 text-sm text-slate-300">
-            <Link href="#" className="hover:text-cyan-400 transition-colors">Beli Accounts</Link>
-            <Link href="#" className="hover:text-cyan-400 transition-colors">Jual Account</Link>
+            <Link href="#" className="hover:text-cyan-400 transition-colors">Beli Akun</Link>
+            <Link href="#" className="hover:text-cyan-400 transition-colors">Jual Akun</Link>
             <Link href="#" className="hover:text-cyan-400 transition-colors">Proses Verifikasi</Link>
             <Link href="#" className="hover:text-cyan-400 transition-colors">Reviews</Link>
         </div>
@@ -32,7 +32,7 @@ return (
             </div>
             
             {/* Label / Username */}
-            <span className="font-medium text-slate-200 text-xs sm:text-sm pr-1 group-hover:text-cyan-400 transition-colors">
+            <span className="font-medium text-slate-200 text-md pr-1 group-hover:text-cyan-400 transition-colors">
                 Profile
             </span>
             </button>

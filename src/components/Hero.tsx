@@ -26,11 +26,11 @@ return (
             </div>
             <input
             type="text"
-            placeholder="Try searching: Mythic, Collector skin, 100+ heroes..."
+            placeholder="Mencari : Akun Mythic, Collector skin, 100+ heroes..."
             className="w-full bg-transparent px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none"
             />
             <button className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition">
-            Search
+            Cari
             </button>
         </div>
 
@@ -38,11 +38,11 @@ return (
         <div className="mt-6 flex flex-wrap justify-center gap-4">
             <button className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 text-white px-6 py-3 rounded-lg font-medium text-sm transition">
             <ShoppingBag className="w-4 h-4" />
-            Buy Account
+            Beli Account
             </button>
             <button className="flex items-center gap-2 bg-[#131B2E] hover:bg-slate-800 text-slate-200 border border-slate-700 px-6 py-3 rounded-lg font-medium text-sm transition">
             <Shield className="w-4 h-4 text-cyan-400" />
-            24/7 Support
+            24/7 Bantuan
             </button>
         </div>
         </div>

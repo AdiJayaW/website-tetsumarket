@@ -3,23 +3,23 @@ import { ShieldCheck, Zap, Lock, Users } from 'lucide-react';
 const features = [
 {
     icon: ShieldCheck,
-    title: "Instant Protection",
-    desc: "Every transaction is secured with escrow protection until you verify account ownership."
+    title: "Perlindungan Langsung",
+    desc: "Setiap transaksi diamankan dengan perlindungan escrow hingga Anda memverifikasi kepemilikan akun."
 },
 {
     icon: Zap,
-    title: "Fast Delivery",
-    desc: "Receive account credentials instantly right after your payment is confirmed."
+    title: "Proses Cepat",
+    desc: "Kredensial akun akan dikirim instan segera setelah pembayaran dikonfirmasi."
 },
 {
     icon: Lock,
-    title: "Secure Payment",
-    desc: "Multiple trusted payment gateways with 256-bit encryption for safe checkout."
+    title: "Pembayaran Terjamin",
+    desc: "Dukungan beragam metode pembayaran terpercaya dengan enkripsi 256-bit demi keamanan transaksi."
 },
 {
     icon: Users,
-    title: "Trusted Marketplace",
-    desc: "Over 15,000+ gamers trust our verified platform for trading ML accounts."
+    title: "Marketplace Terpercaya",
+    desc: "15.000+ gamer mempercayakan transaksi akun ML mereka di platform terverifikasi kami."
 }
 ];
 
@@ -27,8 +27,8 @@ export default function FeaturesSection() {
 return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
     <div className="text-center mb-12">
-        <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">WHY CHOOSE US</span>
-        <h2 className="text-3xl font-bold text-white mt-2">The Safest Choice for ML Accounts</h2>
+        <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">Kenapa pilih kami?</span>
+        <h2 className="text-3xl font-bold text-white mt-2">Pilihan Paling Aman untuk Akun ML</h2>
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

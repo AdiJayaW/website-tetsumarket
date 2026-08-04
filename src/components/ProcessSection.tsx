@@ -1,5 +1,5 @@
 const steps = [
-{ step: "01", title: "Select Account", desc: "Choose your dream ML account from verified sellers." },
+{ step: "01", title: "Pilih Akun", desc: "Pilih Akun Impianmu dari seller yang terverifikasi" },
 { step: "02", title: "Quality Control", desc: "Our system verifies stats, skins, and unbind status." },
 { step: "03", title: "Secure Payment", desc: "Funds held safely in escrow until you check the data." },
 { step: "04", title: "Safe Full Access", desc: "Get full credentials and change email securely." },
@@ -9,8 +9,8 @@ export default function ProcessSection() {
 return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
     <div className="text-center mb-12">
-        <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">HOW IT WORKS</span>
-        <h2 className="text-3xl font-bold text-white mt-2">Account Verification Process</h2>
+        <span className="text-xs font-semibold uppercase tracking-widest text-purple-400">Cara Transaksi</span>
+        <h2 className="text-3xl font-bold text-white mt-2">Proses Verifikasi Akun</h2>
     </div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
