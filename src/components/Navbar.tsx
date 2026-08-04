@@ -17,9 +17,9 @@ return (
 
         {/* Links Navigasi */}
         <div className="hidden md:flex items-center gap-10 text-sm text-slate-300">
-            <Link href="#" className="hover:text-cyan-400 transition-colors">Buy Accounts</Link>
-            <Link href="#" className="hover:text-cyan-400 transition-colors">Sell Account</Link>
-            <Link href="#" className="hover:text-cyan-400 transition-colors">Verification Process</Link>
+            <Link href="#" className="hover:text-cyan-400 transition-colors">Beli Accounts</Link>
+            <Link href="#" className="hover:text-cyan-400 transition-colors">Jual Account</Link>
+            <Link href="#" className="hover:text-cyan-400 transition-colors">Proses Verifikasi</Link>
             <Link href="#" className="hover:text-cyan-400 transition-colors">Reviews</Link>
         </div>
 
