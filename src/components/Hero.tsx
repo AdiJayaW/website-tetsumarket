@@ -7,7 +7,7 @@ return (
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/20 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-4xl mx-auto relative z-10">
-            <h1 className="text-7xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-6xl font-extrabold text-white tracking-tight leading-tight">
             Jual dan Beli Akun <br />
             <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
                 Mobile Legends

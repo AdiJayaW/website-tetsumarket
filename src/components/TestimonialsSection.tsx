@@ -25,8 +25,8 @@ export default function TestimonialsSection() {
 return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
     <div className="text-center mb-12">
-        <span className="text-xs font-semibold uppercase tracking-widest text-yellow-400">TESTIMONIALS</span>
-        <h2 className="text-3xl font-bold text-white mt-2">What Our Customers Say</h2>
+        <span className="text-xs font-semibold uppercase tracking-widest text-yellow-400">TESTIMONI</span>
+        <h2 className="text-3xl font-bold text-white mt-2">Apa Kata Pengguna Kami</h2>
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
