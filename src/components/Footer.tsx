@@ -7,15 +7,19 @@ return (
         {/* Brand Info */}
         <div>
         <div className="flex items-center gap-2 mb-4">
-            <div className="bg-gradient-to-r from-purple-600 to-cyan-500 p-1.5 rounded-lg">
-            <ShieldCheck className="w-5 h-5 text-white" />
+            <div className="p-2 rounded-lg flex items-center justify-center">
+                <img 
+                    src="./icon.png" 
+                    alt="Shield Icon" 
+                    className="w-10 h-9 object-contain" 
+                />
             </div>
             <span className="font-bold text-lg text-white">
             Tetsu<span className="text-cyan-400">Market</span>
             </span>
         </div>
-        <p className="text-slate-400 text-xs leading-relaxed">
-            Safe and verified marketplace for Mobile Legends accounts trading.
+        <p className="text-slate-400 text-s leading-relaxed">
+            Platform jual beli akun Games yang aman dan terpercaya.
         </p>
         </div>
 
