@@ -22,7 +22,7 @@ export default function GameCard({ title, publisher, image }: GameCardProps) {
 
         {/* Info */}
         <div className="mt-3 px-1">
-            <h3 className="text-purple-400 font-bold text-base line-clamp-1 group-hover:text-purple-300 transition-colors">
+            <h3 className="text-yellow-400 font-bold text-base line-clamp-1 group-hover:text-yellow-200 transition-colors">
             {title}
             </h3>
             <p className="text-xs text-slate-400 font-medium mt-0.5">
