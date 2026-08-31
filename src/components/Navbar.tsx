@@ -8,7 +8,7 @@ const navLinks = [
     { name: 'Home', href: '/', icon: Home },
     { name: 'Cek Transaksi', href: '/transaksi', icon: Search },
     { name: 'Jual Akun', href: 'https://wa.me/6285715338331', target: '_blank', icon: Tag },
-    { name: 'Akun Bermasalah', href: '/akun-bermasalah', icon: CircleAlert },
+    { name: 'Masalah Akun', href: '/akun-masalah', icon: CircleAlert },
 ];
 
 export default function Navbar() {

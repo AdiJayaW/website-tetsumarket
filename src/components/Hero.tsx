@@ -23,7 +23,7 @@ return (
         <div className="mt-6 flex flex-wrap justify-center gap-4">
             <button className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:opacity-90 text-white px-6 py-3 rounded-lg font-medium text-sm transition">
             <ShoppingBag className="w-4 h-4" />
-            Beli Account
+            Beli Akun
             </button>
             <button className="flex items-center gap-2 bg-[#131B2E] hover:bg-slate-800 text-slate-200 border border-slate-700 px-6 py-3 rounded-lg font-medium text-sm transition">
             <Shield className="w-4 h-4 text-cyan-400" />

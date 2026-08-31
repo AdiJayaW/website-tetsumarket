@@ -10,14 +10,16 @@ import Footer from '@/components/Footer';
 
 const dummyGames = [
   {
-    title: "Mobile Legends Stock Tetsumarket",
+    title: "Jual Beli Akun Mobile Legends Stock Tetsumarket",
     publisher: "Moonton",
     image: "/images/mlbb_banner.webp",
+    href: "/mlbb-stock", // Add href to link to another page
   },
   {
-    title: "Mobile Legends Titip Jual",
+    title: "Titip Jual Akun Mobile Legends ",
     publisher: "Moonton",
     image: "/images/mlbb_jaspost.webp",
+    href: "/mlbb-titip", // Add href to link to another page
   },
 ];
 
@@ -42,8 +44,8 @@ export default function Home() {
       <section className={`py-12 px-4 ${containerWidth} mx-auto transition-all duration-300`}>
 
         <div className="mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Kategori Games</h2>
-          <p className="text-sm text-slate-400 mt-1">Pilih game favoritmu untuk melihat stok akun yang tersedia</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Layanan Kami</h2>
+          <p className="text-sm text-slate-400 mt-1">Menyediakan segala transaksi akun yang aman serta jasa posting untuk akun tertera.</p>
         </div>
         
         {/* Dynamic Grid Layout */}
