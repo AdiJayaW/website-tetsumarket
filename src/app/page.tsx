@@ -17,7 +17,7 @@ const dummyGames = [
   {
     title: "Mobile Legends Titip Jual",
     publisher: "Moonton",
-    image: "/images/mlbb_titip.webp",
+    image: "/images/mlbb_jaspost.webp",
   },
 ];
 
