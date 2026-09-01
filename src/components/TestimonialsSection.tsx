@@ -1,43 +1,109 @@
-import { Star, Quote } from 'lucide-react';
+'use client';
 
-export interface ReviewItem {
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+
+// Import CSS Swiper
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+export interface TestimonialItem {
 id: number;
-name: string;
-role: string;
-comment: string;
-stars: number;
+image_url?: string;
+caption?: string;
+customer_name?: string;
 }
 
-export default function TestimonialsSection({ reviews = [] }: { reviews?: ReviewItem[] }) {
+export default function TestimonialsSection({
+reviews = [],
+}: {
+reviews?: TestimonialItem[];
+}) {
+// 1. Mencegah Hydration Error di Next.js
+const [isMounted, setIsMounted] = useState(false);
+
+useEffect(() => {
+    setIsMounted(true);
+}, []);
+
+if (!isMounted) {
+    return null; // Tunda render sampai komponen siap di client
+}
+
 return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
-    <div className="text-center mb-12">
-        <span className="text-xs font-semibold uppercase tracking-widest text-yellow-400">TESTIMONI</span>
-        <h2 className="text-3xl font-bold text-white mt-2">Apa Kata Pengguna Kami</h2>
+    {/* Header */}
+    <div className="text-center mb-10">
+        <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+        TESTIMONI REAL
+        </span>
+        <h2 className="text-3xl font-bold text-white mt-2">
+        Bukti Transaksi & Kepuasan Buyer
+        </h2>
+        <p className="text-sm text-slate-400 mt-1">
+        Geser untuk melihat riwayat transaksi sukses di Tetsumarket
+        </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {reviews.map((rev) => (
-        <div key={rev.id} className="bg-[#131B2E] border border-slate-800 p-6 rounded-2xl flex flex-col justify-between">
-            <div>
-            <Quote className="w-8 h-8 text-purple-500/40 mb-3" />
-            <p className="text-sm text-slate-300 italic mb-6">"{rev.comment}"</p>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-slate-800 pt-4">
-            <div>
-                <h4 className="text-sm font-bold text-white">{rev.name}</h4>
-                <span className="text-xs text-slate-500">{rev.role}</span>
-            </div>
-            <div className="flex text-yellow-400">
-                {[...Array(rev.stars)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-yellow-400" />
-                ))}
-            </div>
-            </div>
+    {/* Jika data kosong */}
+    {reviews.length === 0 ? (
+        <div className="text-center py-10 border border-dashed border-slate-800 rounded-2xl text-slate-500 text-sm">
+        Belum ada testimoni yang diunggah.
         </div>
-        ))}
-    </div>
+    ) : (
+        /* Slider Swiper */
+        <Swiper
+        modules={[Autoplay, Pagination]}
+        spaceBetween={20}
+        slidesPerView={1}
+        autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
+        }}
+        pagination={{ clickable: true }}
+        breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 4 },
+        }}
+        className="pb-12 !px-2"
+        >
+        {reviews.map((item) => {
+            // 2. Fallback gambar jika URL di database null/kosong
+            const validImage = item.image_url || '/images/mlbb_banner.webp';
+
+            return (
+            <SwiperSlide key={item.id}>
+                <div className="bg-[#131B2E] border border-slate-800 hover:border-cyan-500/50 rounded-2xl overflow-hidden transition-all duration-300 group">
+                {/* Frame Gambar Portrait */}
+                <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
+                    <Image
+                    src={validImage}
+                    alt={item.caption || 'Testimoni Tetsumarket'}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                </div>
+
+                {/* Deskripsi */}
+                <div className="p-3.5 bg-[#0B0E17]/80">
+                    {item.customer_name && (
+                    <span className="block text-xs font-bold text-cyan-400 mb-0.5">
+                        {item.customer_name}
+                    </span>
+                    )}
+                    <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                    {item.caption || 'Transaksi Berhasil'}
+                    </p>
+                </div>
+                </div>
+            </SwiperSlide>
+            );
+        })}
+        </Swiper>
+    )}
     </section>
 );
 }
