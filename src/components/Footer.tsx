@@ -3,9 +3,8 @@ import { FaInstagram, FaTiktok, FaFacebook, FaDiscord } from 'react-icons/fa6';
 
 const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Cek Transaksi', href: '/transaksi' },
     { name: 'Jual Akun', href: 'https://wa.me/6285715338331', target: '_blank' },
-    { name: 'Masalah Akun?', href: '/akun-masalah' },
+    { name: 'Laporkan Akun Bermasalah', href: '/akun-masalah' },
 ];
 
 const socialLinks = [

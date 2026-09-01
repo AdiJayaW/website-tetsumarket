@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -20,7 +21,6 @@ rating?: number;
 rekber_by?: string;
 }
 
-// Helper Komponen Bintang
 function RatingStars({ rating = 5 }: { rating?: number }) {
 const stars = [];
 
@@ -74,7 +74,6 @@ const [randomReviews, setRandomReviews] = useState<TestimonialItem[]>([]);
 useEffect(() => {
     setIsMounted(true);
     if (reviews.length > 0) {
-    // Mengacak array dan memotongnya menjadi maksimal 10 item
     const shuffled = [...reviews]
         .sort(() => Math.random() - 0.5)
         .slice(0, 10);
@@ -111,8 +110,27 @@ return (
         ))}
         </div>
     ) : (
-        /* Tambahkan px-8 sm:px-12 di wrapper agar ada ruang kosong di luar kartu untuk tombol panah */
-        <div className="relative px-8 sm:px-12">
+        /* Wrapper Utama: Diberi padding samping (px-10 sm:px-12) agar tombol panah punya tempat melayang di luar */
+        <div className="relative px-10 sm:px-12">
+        
+        {/* TOMBOL PANAH KIRI (KUSTOM, DI LUAR CAROUSEL) */}
+        <button
+            id="testimonial-prev"
+            aria-label="Previous slide"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#131B2E] border border-slate-700 text-cyan-400 flex items-center justify-center hover:bg-cyan-950 transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+            <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* TOMBOL PANAH KANAN (KUSTOM, DI LUAR CAROUSEL) */}
+        <button
+            id="testimonial-next"
+            aria-label="Next slide"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#131B2E] border border-slate-700 text-cyan-400 flex items-center justify-center hover:bg-cyan-950 transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+            <ChevronRight className="w-5 h-5" />
+        </button>
+
         <Swiper
             modules={[Autoplay, Pagination, Navigation]}
             spaceBetween={20}
@@ -122,44 +140,22 @@ return (
             disableOnInteraction: false,
             }}
             pagination={{ clickable: true }}
-            navigation={true}
+            navigation={{
+            prevEl: '#testimonial-prev',
+            nextEl: '#testimonial-next',
+            }}
             breakpoints={{
             640: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 },
+            1024: { slidesPerView: 4 }, // Tepat 4 kartu di layar desktop
             }}
-            /* POSISI PANAH DITARIK KE KIRI DAN KANAN (DILUAR CARD) */
-            className="!pb-14 
-            [&_.swiper-pagination]:!bottom-2 
+            className="!pb-12
+            [&_.swiper-pagination]:!bottom-0 
             [&_.swiper-pagination-bullet]:!bg-slate-600 
             [&_.swiper-pagination-bullet]:!opacity-40 
             [&_.swiper-pagination-bullet-active]:!bg-cyan-400 
             [&_.swiper-pagination-bullet-active]:!opacity-100 
             [&_.swiper-pagination-bullet-active]:!w-6 
-            [&_.swiper-pagination-bullet-active]:!rounded-full 
-            [&_.swiper-button-prev]:!text-cyan-400 
-            [&_.swiper-button-prev]:!bg-[#131B2E] 
-            [&_.swiper-button-prev]:hover:!bg-cyan-950
-            [&_.swiper-button-prev]:!w-9 
-            [&_.swiper-button-prev]:!h-9 
-            [&_.swiper-button-prev]:!rounded-full 
-            [&_.swiper-button-prev]:!border 
-            [&_.swiper-button-prev]:!border-slate-700 
-            [&_.swiper-button-prev]:after:!text-xs 
-            [&_.swiper-button-prev]:after:!font-bold
-            [&_.swiper-button-prev]:!left-0
-            [&_.swiper-button-prev]:!-translate-y-6
-            [&_.swiper-button-next]:!text-cyan-400 
-            [&_.swiper-button-next]:!bg-[#131B2E] 
-            [&_.swiper-button-next]:hover:!bg-cyan-950
-            [&_.swiper-button-next]:!w-9 
-            [&_.swiper-button-next]:!h-9 
-            [&_.swiper-button-next]:!rounded-full 
-            [&_.swiper-button-next]:!border 
-            [&_.swiper-button-next]:!border-slate-700 
-            [&_.swiper-button-next]:after:!text-xs 
-            [&_.swiper-button-next]:after:!font-bold
-            [&_.swiper-button-next]:!right-0
-            [&_.swiper-button-next]:!-translate-y-6"
+            [&_.swiper-pagination-bullet-active]:!rounded-full"
         >
             {randomReviews.map((item) => {
             const validImage =
@@ -171,7 +167,8 @@ return (
             const validRekber = item.rekber_by || 'Admin Tetsumarket';
 
             return (
-                <SwiperSlide key={item.id} className="pb-2">
+                <SwiperSlide key={item.id}>
+                {/* KARTU ASLI AWAL DARI ANDA (TIDAK DIUBAH SAMA SEKALI) */}
                 <div className="bg-[#131B2E] border border-slate-800 hover:border-cyan-500/50 rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
                     
                     {/* Frame Gambar Portrait */}
