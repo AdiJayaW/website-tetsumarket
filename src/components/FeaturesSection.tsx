@@ -4,7 +4,7 @@ const features = [
 {
     icon: ShieldCheck,
     title: "100% Stok Milik Sendiri",
-    desc: "Semua akun adalah milik kami & sudah diverifikasi total. Tanpa penjual pihak ketiga.."
+    desc: "Semua akun adalah milik kami & sudah diverifikasi total. Tanpa penjual pihak ketiga."
 },
 {
     icon: Lock,
@@ -19,7 +19,7 @@ const features = [
 {
     icon: Users,
     title: "Dukungan Amankan Data",
-    desc: "Tim admin kami siap memandu proses ganti email & bind ke data pribadi Anda sampai tuntas."
+    desc: "Tim admin kami siap memandu proses mengamankan data sampai ke tangan buyers."
 }
 ];
 
