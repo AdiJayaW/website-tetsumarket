@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaInstagram, FaTiktok } from 'react-icons/fa6';
+import { FaInstagram, FaTiktok, FaFacebook, FaDiscord } from 'react-icons/fa6';
 
 const navLinks = [
     { name: 'Home', href: '/' },
@@ -9,14 +9,17 @@ const navLinks = [
 ];
 
 const socialLinks = [
-    { name: 'Instagram', href: 'https://instagram.com', icon: FaInstagram },
-    { name: 'TikTok', href: 'https://tiktok.com', icon: FaTiktok },
+    { name: 'Instagram', href: 'https://instagram.com/tetsumarket', icon: FaInstagram },
+    { name: 'TikTok', href: 'https://tiktok.com/tetsumarket', icon: FaTiktok },
+    { name: 'Facebook', href: 'https://www.facebook.com/share/1BmgKVr7ys', icon: FaFacebook },
+    { name: 'Grub Facebook', href: 'https://www.facebook.com/share/g/1D2HC2oCF2', icon: FaFacebook },
+    { name: 'Server Discord', href: 'https://discord.com/invite/r2hZac5unu', icon: FaDiscord }
 ];
 
 export default function Footer() {
     return (
         <footer className="mt-20 border-t border-slate-800/80 bg-[#080B12] pt-12 pb-8 text-slate-400 text-sm">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="max-w-8xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                 
                 {/* 1. Brand Info (Melebar 2 kolom di tampilan besar atau 1 kolom di mobile) */}
                 <div className="lg:col-span-1">
@@ -89,7 +92,7 @@ export default function Footer() {
                                 rel="noopener noreferrer" 
                                 className="hover:text-cyan-400 transition-colors"
                             >
-                                Dukungan Customer Service
+                                Whatsapp Customer Service
                             </a>
                         </li>
                     </ul>
