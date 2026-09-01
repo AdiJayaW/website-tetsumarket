@@ -17,9 +17,8 @@ export default async function Home() {
   const [categoriesRes, faqsRes, testimonialsRes] = await Promise.all([
     supabase.from('categories').select('*'),
     supabase.from('faqs').select('id, question, answer').order('order_index', { ascending: true }),
-    supabase.from('testimonials').select('id, image_url, caption, customer_name'),
+    supabase.from('testimonials').select('*'),
   ]);
-
   const categories = categoriesRes.data || [];
   const faqs = faqsRes.data || [];
   const testimonials = testimonialsRes.data || [];
