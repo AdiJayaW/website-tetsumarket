@@ -89,18 +89,8 @@ export default function Footer() {
                                 rel="noopener noreferrer" 
                                 className="hover:text-cyan-400 transition-colors"
                             >
-                                Bantuan CS 24/7
+                                Dukungan Customer Service
                             </a>
-                        </li>
-                        <li>
-                            <Link href="/faq" className="hover:text-cyan-400 transition-colors">
-                                FAQ (Tanya Jawab)
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/bantuan" className="hover:text-cyan-400 transition-colors">
-                                Panduan Transaksi
-                            </Link>
                         </li>
                     </ul>
                 </div>
@@ -133,7 +123,6 @@ export default function Footer() {
             {/* Copyright Bottom */}
             <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <p>© 2026 TetsuMarket. All rights reserved.</p>
-                <p className="text-slate-600">Built for Gamers with ❤️</p>
             </div>
         </footer>
     );

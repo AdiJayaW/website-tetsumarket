@@ -1,8 +1,8 @@
 const stats = [
-{ value: "2,847", label: "Akun Terjual" },
-{ value: "15,392", label: "Happy Customers" },
-{ value: "8,210", label: "Active Listings" },
-{ value: "99.2%", label: "Kepuasan Pengguna" },
+{ value: "19", label: "Akun Terjual" },
+{ value: "19", label: "Happy Customers" },
+{ value: "4", label: "Active Listings" },
+{ value: "99.9%", label: "Kepuasan Pengguna" },
 ];
 
 export default function StatsSection() {

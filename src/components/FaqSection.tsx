@@ -4,16 +4,24 @@ import { ChevronDown } from 'lucide-react';
 
 const faqs = [
 {
-    q: "How does the account buyer protection work?",
-    a: "Your payment is held safely in escrow. Money is only released to the seller after you log in, verify the account details, and secure full access."
+    q: "Tetsumarket ini trusted nggak, Min? Ada bukti transaksinya?",
+    a: "Trusted dongs, kalian bisa langsung cek di testimoni, atau langsung ke server discordnya, buat langsung cek"
 },
 {
-    q: "Are all accounts clean unbind?",
-    a: "Yes, every account listed undergoes strict verification to ensure Moonton, VK, TikTok, and Facebook bindings can be safely transferred."
+    q: "Ada garansi ga, kalau beli di tetsumarket?",
+    a: "Kami Beri garansi uang kembali 100% full, jika kalian beli akun di tetsumarket, dan dalam kondisi tidak dijual kembali"
 },
 {
-    q: "What if I face an issue after purchase?",
-    a: "Our 24/7 support team and live chat system are ready to assist you instantly to resolve any account delivery issues."
+    q: "Kalau akunnya tiba-tiba kena hackback, Tetsumarket tanggung jawab nggak?",
+    a: "Kalau akun kena HB setelah beli dari Tetsumarket, kami bakal reffund dana kalian 100%"
+},
+{
+    q: "Transaksinya wajib transfer langsung atau bisa pakai perantara biar aman?",
+    a: "Kalian bisa pakai rekber yang sudah trusted, atau kalian transfer langsung juga aman sentosa"
+},
+{
+    q: "Selain beli akun, bisa nitip jual atau ngobrol bareng player lain?",
+    a: "Pasti bisa dongs, kami sudah siapin buat kalian yang mau nitip akun di server discord kami, cuzz langsung join ajahh"
 }
 ];
 
@@ -24,7 +32,7 @@ return (
     <section className="py-16 px-4 max-w-3xl mx-auto">
     <div className="text-center mb-10">
         <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">FAQ</span>
-        <h2 className="text-3xl font-bold text-white mt-2">Common Questions</h2>
+        <h2 className="text-3xl font-bold text-white mt-2">Pertanyaan Umum</h2>
     </div>
 
     <div className="space-y-4">
