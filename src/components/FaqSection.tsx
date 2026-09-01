@@ -30,8 +30,9 @@ return (
             </button>
 
             {openIdx === idx && (
-            <div className="px-5 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3">
-                {faq.answer}
+            /* Perubahan di baris ini: tambahkan class `whitespace-pre-line` dan replace `\n` */
+            <div className="px-5 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3 whitespace-pre-line leading-relaxed">
+                {faq.answer?.replace(/\\n/g, '\n')}
             </div>
             )}
         </div>

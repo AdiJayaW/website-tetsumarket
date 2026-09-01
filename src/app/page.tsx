@@ -13,16 +13,19 @@ import ScrollReveal from '@/components/ScrollReveal';
 export default async function Home() {
   const supabase = await createClient();
 
-  // Fetch Kategori Game, Testimoni, dan FAQ secara paralel
-  const [categoriesRes, faqsRes, testimonialsRes] = await Promise.all([
+  // Fetch Kategori Game, FAQ, Testimoni, dan Jumlah Akun Aktif secara paralel
+  const [categoriesRes, faqsRes, testimonialsRes, accountsRes] = await Promise.all([
     supabase.from('categories').select('*'),
     supabase.from('faqs').select('id, question, answer').order('order_index', { ascending: true }),
     supabase.from('testimonials').select('*'),
+    supabase.from('accounts').select('id', { count: 'exact', head: true }),
   ]);
+
   const categories = categoriesRes.data || [];
   const faqs = faqsRes.data || [];
   const testimonials = testimonialsRes.data || [];
-  
+  // Jika tabel accounts belum diisi atau error, fallback ke default 4
+  const activeListingsCount = accountsRes.count ?? 4;
 
   // Logika penataan grid dinamis berdasarkan jumlah data dari database
   const totalGames = categories.length;
@@ -38,9 +41,12 @@ export default async function Home() {
         <Hero />
       </ScrollReveal>
 
-      {/* Stats Section */}
+      {/* Stats Section - Sekarang menerima data dinamis dari Supabase */}
       <ScrollReveal delay={0.1}>
-        <StatsSection />
+        <StatsSection 
+          testimonials={testimonials} 
+          activeListingsCount={activeListingsCount} 
+        />
       </ScrollReveal>
 
       {/* Games Section */}
