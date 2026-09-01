@@ -1,7 +1,7 @@
 const steps = [
 { step: "01", title: "Pilih Akun Pilihanmu", desc: "Jelajahi katalog akun siap kirim kami. Apa yang Anda lihat di tangkapan layar 100% akurat dan siap dipindah tangankan.", borderColor: "border-purple-500", textColor: "text-purple-400", glow: "shadow-[0_0_20px_rgba(168,85,247,0.4)]"},
-{ step: "02", title: "Pembayaran Otomatis & Aman", desc: "Selesaikan pembayaran dengan mudah dan aman melalui gateway pembayaran otomatis (QRIS, E-Wallet, atau Transfer Bank).", borderColor: "border-cyan-400", textColor: "text-cyan-400", glow: "shadow-[0_0_20px_rgba(56,189,248,0.4)]"},
-{ step: "03", title: "Penyerahan & Pengamanan Data", desc: "Terima data login secara instan. Tim/sistem kami akan memandu Anda untuk mengganti email dan mengaitkan akun ke data pribadi Anda.", borderColor: "border-emerald-500", textColor: "text-emerald-400", glow: "shadow-[0_0_20px_rgba(34,197,94,0.4)]"},
+{ step: "02", title: "Pembayaran via Whatsap", desc: "Selesaikan pembayaran melalui Whatsapp resmi Tetsumarket yang akan dipandu nanti oleh tim kami.", borderColor: "border-cyan-400", textColor: "text-cyan-400", glow: "shadow-[0_0_20px_rgba(56,189,248,0.4)]"},
+{ step: "03", title: "Penyerahan & Pengamanan Data", desc: "Terima data login dari Wa. Tim kami akan memandu Anda untuk mengganti email dan mengaitkan akun ke data pribadi Anda.", borderColor: "border-emerald-500", textColor: "text-emerald-400", glow: "shadow-[0_0_20px_rgba(34,197,94,0.4)]"},
 { step: "04", title: "Garansi Resmi Aktif", desc: "Transaksi selesai! Akun kini sepenuhnya milik Anda dan secara otomatis dilindungi oleh garansi anti-hackback resmi dari kami.", borderColor: "border-amber-500", textColor: "text-amber-400", glow: "shadow-[0_0_20px_rgba(245,158,11,0.4)]"},
 ];
 

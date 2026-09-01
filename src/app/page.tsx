@@ -1,3 +1,4 @@
+import { createClient } from '@/lib/supabase/server';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
@@ -7,25 +8,24 @@ import ProcessSection from '@/components/ProcessSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';
-import ScrollReveal from '@/components/ScrollReveal'; // 1. Import wrapper
+import ScrollReveal from '@/components/ScrollReveal';
 
-const dummyGames = [
-  {
-    title: "Mobile Legends Stock Tetsumarket",
-    publisher: "Moonton",
-    image: "/images/mlbb_banner.webp",
-    href: "/mlbb-stock",
-  },
-  {
-    title: "Mobile Legends Titip Jual",
-    publisher: "Moonton",
-    image: "/images/mlbb_jaspost.webp",
-    href: "/mlbb-titip",
-  },
-];
+export default async function Home() {
+  const supabase = await createClient();
 
-export default function Home() {
-  const totalGames = dummyGames.length;
+  // Fetch Kategori Game, Testimoni, dan FAQ secara paralel
+  const [categoriesRes, faqsRes, testimonialsRes] = await Promise.all([
+    supabase.from('categories').select('*'),
+    supabase.from('faqs').select('id, question, answer').order('order_index', { ascending: true }),
+    supabase.from('testimonials').select('*'),
+  ]);
+
+  const categories = categoriesRes.data || [];
+  const faqs = faqsRes.data || [];
+  const testimonials = testimonialsRes.data || [];
+
+  // Logika penataan grid dinamis berdasarkan jumlah data dari database
+  const totalGames = categories.length;
   const gridCols = totalGames <= 4 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
   const containerWidth = totalGames <= 4 ? "max-w-4xl" : "max-w-7xl";
 
@@ -52,8 +52,15 @@ export default function Home() {
           </div>
           
           <div className={`grid ${gridCols} gap-5`}>
-            {dummyGames.map((game, index) => (
-              <GameCard key={index} {...game} />
+            {categories.map((game) => (
+              <GameCard
+                key={game.id}
+                title={game.title}
+                publisher={game.publisher}
+                // Baca game.image, jika tidak ada baca game.image_url
+                image={game.image || game.image_url} 
+                href={game.href || game.slug}
+              />
             ))}
           </div>
         </section>
@@ -71,12 +78,12 @@ export default function Home() {
 
       {/* Testimonials */}
       <ScrollReveal>
-        <TestimonialsSection />
+        <TestimonialsSection reviews={testimonials} />
       </ScrollReveal>
 
       {/* FAQ */}
       <ScrollReveal>
-        <FaqSection />
+        <FaqSection faqs={faqs} />
       </ScrollReveal>
 
       <Footer />
