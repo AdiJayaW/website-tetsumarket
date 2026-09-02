@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Tetsumarket - Jasa Rekber & Marketplace Game Terpercaya',
+  title: 'Tetsumarket',
   description: 'Tempat jual beli akun game dan jasa rekber aman di Tetsumarket. Proses cepat dan terpercaya.'
 };
 
