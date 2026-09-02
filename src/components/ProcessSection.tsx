@@ -7,11 +7,13 @@ const steps = [
 
 export default function ProcessSection() {
 return (
-    <section className="py-10 sm:py-16 px-4 max-w-6xl mx-auto overflow-hidden">
+    <section className="py-10 sm:py-16 md:py-20 px-4 max-w-6xl md:max-w-7xl mx-auto overflow-hidden">
     {/* Title */}
-    <div className="text-center mb-8 sm:mb-12">
-        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-cyan-400">100% AMAN & BERGARANSI</span>
-        <h2 className="text-xl sm:text-3xl font-bold text-white mt-1">
+    <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <span className="text-[10px] sm:text-xs md:text-sm font-semibold uppercase tracking-widest text-cyan-400">
+        100% AMAN & BERGARANSI
+        </span>
+        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-1 md:mt-2">
         4 Langkah Mudah Dapatkan Akun
         </h2>
     </div>
@@ -19,7 +21,7 @@ return (
     {/* Steps Container */}
     <div className="relative">
         {/* GARIS PENYAMBUNG DESKTOP (Horizontal Lurus Slim) */}
-        <div className="hidden md:block absolute top-6 left-[12.5%] right-[12.5%] h-[1.5px] bg-gradient-to-r from-purple-500 via-cyan-400 via-emerald-500 to-amber-500 z-0" />
+        <div className="hidden md:block absolute top-6 md:top-10 left-[12.5%] right-[12.5%] h-[1.5px] md:h-[2px] bg-gradient-to-r from-purple-500 via-cyan-400 via-emerald-500 to-amber-500 z-0" />
 
         <svg 
         className="md:hidden absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" 
@@ -78,23 +80,23 @@ return (
         </svg>
 
         {/* Grid Container */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 md:gap-x-6 lg:gap-x-8 relative z-10">
         {steps.map((item, idx) => (
             <div key={idx} className={`flex flex-col items-center text-center ${item.gridPos}`}>
             {/* Circle Number */}
             <div
-                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 bg-[#0B0E17] flex items-center justify-center font-bold text-sm sm:text-base mb-3 ${item.borderColor} ${item.textColor} ${item.glow} transition-all duration-300`}
+                className={`w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-full border-2 md:border-[3px] bg-[#0B0E17] flex items-center justify-center font-bold text-sm sm:text-base md:text-xl lg:text-2xl mb-3 md:mb-5 ${item.borderColor} ${item.textColor}${item.glow} transition-all duration-300`}
             >
                 {item.step}
             </div>
 
             {/* Title */}
-            <h3 className="text-xs sm:text-sm font-bold text-white mb-1 max-w-[130px] sm:max-w-[180px]">
+            <h3 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2 max-w-[130px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[260px]">
                 {item.title}
             </h3>
 
             {/* Description */}
-            <p className="text-[10px] sm:text-xs text-slate-400 leading-relaxed max-w-[130px] sm:max-w-[200px]">
+            <p className="text-[10px] sm:text-xs md:text-sm lg:text-base text-slate-400 leading-relaxed max-w-[130px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px]">
                 {item.desc}
             </p>
             </div>
