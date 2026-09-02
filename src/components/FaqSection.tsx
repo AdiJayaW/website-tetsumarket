@@ -1,43 +1,89 @@
-'use client';
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+    'use client';
 
-export interface FaqItem {
-id: number;
-question: string;
-answer: string;
-}
+    import { useState } from 'react';
+    import { ChevronDown } from 'lucide-react';
 
-export default function FaqSection({ faqs = [] }: { faqs?: FaqItem[] }) {
-const [openIdx, setOpenIdx] = useState<number | null>(null);
+    interface FaqItem {
+    question: string;
+    answer: string;
+    }
 
-return (
-    <section className="py-16 px-4 max-w-3xl mx-auto">
-    <div className="text-center mb-10">
-        <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">FAQ</span>
-        <h2 className="text-3xl font-bold text-white mt-2">Pertanyaan Umum</h2>
-    </div>
+    const faqData: FaqItem[] = [
+    {
+    question: 'Tetsumarket ini trusted nggak, Min? Ada bukti transaksinya?',
+    answer: 'Tentu saja! Kami memiliki ratusan testimoni transaksi berhasil dari pembeli dan penjual. Kamu bisa mengecek testimoni lengkap di bagian Testimonial atau sosial media resmi kami.',
+    },
+    {
+    question: 'Kalau akunnya tiba-tiba kena hackback, Tetsumarket tanggung jawab nggak?',
+    answer: 'Kami menyediakan garansi serta perlindungan transaksi untuk menjamin keamanan pembeli. Jika terjadi kendala pada akun yang dibeli sesuai ketentuan garansi, tim CS kami akan membantu proses klaim hingga selesai.',
+    },
+    {
+    question: 'Transaksinya wajib transfer langsung atau bisa pakai perantara biar aman?',
+    answer: 'Untuk keamanan maksimal, semua transaksi wajib melalui Rekber (Rekening Bersama) resmi Tetsumarket. Jangan pernah melakukan transaksi langsung di luar kontak resmi kami.',
+    },
+    {
+    question: 'Beli di Tetsumarket ada garansi nya ga min?',
+    answer: 'Ada! Setiap pembelian akun dilengkapi dengan garansi layanan. Durasi dan ketentuan garansi tertera pada detail masing-masing akun.',
+    },
+    {
+    question: 'Selain beli akun, bisa nitip jual akun ga min?',
+    answer: 'Bisa banget. Kamu bisa langsung menghubungi WhatsApp Customer Service kami untuk mengajukan titip jual akun game kamu dengan proses yang cepat dan aman.',
+    },
+    ];
 
-    <div className="space-y-4">
-        {faqs.map((faq, idx) => (
-        <div key={faq.id || idx} className="bg-[#131B2E] border border-slate-800 rounded-xl overflow-hidden">
-            <button
-            onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-            className="w-full text-left p-5 text-white font-medium flex justify-between items-center gap-4 hover:bg-slate-800/50 transition"
-            >
-            <span>{faq.question}</span>
-            <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-200 ${openIdx === idx ? 'rotate-180 text-cyan-400' : ''}`} />
-            </button>
+    export default function FaqSection() {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-            {openIdx === idx && (
-            /* Perubahan di baris ini: tambahkan class `whitespace-pre-line` dan replace `\n` */
-            <div className="px-5 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3 whitespace-pre-line leading-relaxed">
-                {faq.answer?.replace(/\\n/g, '\n')}
-            </div>
-            )}
+    const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+    };
+
+    return (
+    <section className="py-10 sm:py-16 px-4 max-w-4xl mx-auto">
+        {/* Header FAQ */}
+        <div className="text-center mb-8 sm:mb-12">
+        <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-cyan-400">
+            FAQ
+        </span>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-1 sm:mt-2">
+            Pertanyaan Umum
+        </h2>
         </div>
-        ))}
-    </div>
+
+        {/* List Accordion FAQ */}
+        <div className="space-y-3 sm:space-y-4">
+        {faqData.map((item, index) => {
+            const isOpen = openIndex === index;
+            return (
+            <div
+                key={index}
+                className="bg-[#131B2E] border border-slate-800 hover:border-slate-700 rounded-xl sm:rounded-2xl transition-all duration-200 overflow-hidden"
+            >
+                <button
+                onClick={() => toggleFaq(index)}
+                className="w-full p-4 sm:p-5 md:p-6 text-left flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
+                aria-expanded={isOpen}
+                >
+                <span className="font-semibold text-white text-sm sm:text-base md:text-lg leading-snug">
+                    {item.question}
+                </span>
+                <ChevronDown
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-slate-400 flex-shrink-0 transition-transform duration-300 ${
+                    isOpen ? 'rotate-180 text-cyan-400' : ''
+                    }`}
+                />
+                </button>
+
+                {/* Isi Jawaban Accordion */}
+                {isOpen && (
+                <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3 sm:pt-4">
+                    {item.answer}
+                </div>
+                )}
+            </div>
+            );
+        })}
+        </div>
     </section>
-);
-}
+    );
+    }

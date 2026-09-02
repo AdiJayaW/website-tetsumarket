@@ -14,30 +14,29 @@ publisher = '-',
 image = '/images/mlbb_banner.webp',
 href = '#',
 }: GameCardProps) {
-// Proteksi ganda agar href & image tidak pernah bernilai null/undefined
 const validHref = href || '#';
 const validImage = image || '/images/mlbb_banner.webp';
 
 return (
     <Link href={validHref}>
-    <div className="bg-[#131B2E] border border-slate-800 hover:border-purple-500/50 rounded-2xl p-3.5 transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
-        {/* Banner Image Container */}
-        <div className="relative h-40 w-full bg-slate-900 rounded-xl overflow-hidden transition-all duration-300 group-hover:bg-slate-800">
+    <div className="bg-[#131B2E] border border-slate-800 hover:border-purple-500/50 rounded-xl sm:rounded-2xl p-2.5 sm:p-3.5 transition-all duration-300 hover:-translate-y-1 group cursor-pointer h-full flex flex-col justify-between">
+        {/* Banner Image Container - Menggunakan aspect ratio proporsional */}
+        <div className="relative aspect-[16/9] w-full bg-slate-900 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-300 group-hover:bg-slate-800">
         <Image
             src={validImage}
             alt={title}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
             className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
         />
         </div>
 
         {/* Info */}
-        <div className="mt-3 px-1">
-        <h3 className="text-yellow-500 font-bold text-base line-clamp-1 group-hover:text-yellow-200 transition-colors">
+        <div className="mt-2.5 sm:mt-3 px-1">
+        <h3 className="text-yellow-500 font-bold text-xs sm:text-base line-clamp-1 group-hover:text-yellow-200 transition-colors">
             {title}
         </h3>
-        <p className="text-xs text-slate-400 font-medium mt-0.5">
+        <p className="text-[10px] sm:text-xs text-slate-400 font-medium mt-0.5">
             {publisher}
         </p>
         </div>

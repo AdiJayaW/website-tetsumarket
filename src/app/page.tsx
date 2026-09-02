@@ -13,7 +13,6 @@ import ScrollReveal from '@/components/ScrollReveal';
 export default async function Home() {
   const supabase = await createClient();
 
-  // Fetch Kategori Game, FAQ, Testimoni, dan Jumlah Akun Aktif secara paralel
   const [categoriesRes, faqsRes, testimonialsRes, accountsRes] = await Promise.all([
     supabase.from('categories').select('*'),
     supabase.from('faqs').select('id, question, answer').order('order_index', { ascending: true }),
@@ -24,16 +23,16 @@ export default async function Home() {
   const categories = categoriesRes.data || [];
   const faqs = faqsRes.data || [];
   const testimonials = testimonialsRes.data || [];
-  // Jika tabel accounts belum diisi atau error, fallback ke default 4
   const activeListingsCount = accountsRes.count ?? 4;
 
-  // Logika penataan grid dinamis berdasarkan jumlah data dari database
   const totalGames = categories.length;
-  const gridCols = totalGames <= 4 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3";
+  // Penataan grid responsif: 2 kolom di HP (grid-cols-2), 3 kolom di desktop
+  const gridCols = totalGames <= 4 ? "grid-cols-2 sm:grid-cols-2" : "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3";
   const containerWidth = totalGames <= 4 ? "max-w-4xl" : "max-w-7xl";
 
   return (
-    <main className="min-h-screen bg-[#0B0E17] text-slate-100 font-sans selection:bg-purple-500 selection:text-white overflow-hidden">
+    // Ditambahkan pt-20 sm:pt-24 agar tidak terhalang navbar
+    <main className="min-h-screen bg-[#0B0E17] text-slate-100 font-sans selection:bg-purple-500 selection:text-white overflow-hidden pt-20 sm:pt-24">
       <Navbar />
 
       {/* Hero Section */}
@@ -41,7 +40,7 @@ export default async function Home() {
         <Hero />
       </ScrollReveal>
 
-      {/* Stats Section - Sekarang menerima data dinamis dari Supabase */}
+      {/* Stats Section */}
       <ScrollReveal delay={0.1}>
         <StatsSection 
           testimonials={testimonials} 
@@ -51,19 +50,18 @@ export default async function Home() {
 
       {/* Games Section */}
       <ScrollReveal delay={0.2}>
-        <section className={`py-12 px-4 ${containerWidth} mx-auto transition-all duration-300`}>
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Kategori Games</h2>
-            <p className="text-sm text-slate-400 mt-1">Pilih game favoritmu untuk melihat stok akun yang tersedia</p>
+        <section className={`py-8 sm:py-12 px-4 ${containerWidth} mx-auto transition-all duration-300`}>
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-xl sm:text-3xl font-bold text-white">Kategori Games</h2>
+            <p className="text-xs sm:text-sm text-slate-400 mt-1">Pilih game favoritmu untuk melihat stok akun yang tersedia</p>
           </div>
           
-          <div className={`grid ${gridCols} gap-5`}>
+          <div className={`grid ${gridCols} gap-3 sm:gap-5`}>
             {categories.map((game) => (
               <GameCard
                 key={game.id}
                 title={game.title}
                 publisher={game.publisher}
-                // Baca game.image, jika tidak ada baca game.image_url
                 image={game.image || game.image_url} 
                 href={game.href || game.slug}
               />

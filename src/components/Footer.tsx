@@ -18,11 +18,11 @@ const socialLinks = [
 export default function Footer() {
     return (
         <footer className="mt-20 border-t border-slate-800/80 bg-[#080B12] pt-12 pb-8 text-slate-400 text-sm">
-            <div className="max-w-8xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="max-w-7xl mx-auto px-6 space-y-8 md:space-y-10">
                 
-                {/* 1. Brand Info (Melebar 2 kolom di tampilan besar atau 1 kolom di mobile) */}
-                <div className="lg:col-span-1">
-                    <Link href="/" className="flex items-center gap-2 mb-4 hover:opacity-90 transition-opacity">
+                {/* Brand Info (Logo & Deskripsi Rata Tengah) */}
+                <div className="flex flex-col items-center text-center space-y-3">
+                    <Link href="/" className="inline-flex items-center gap-2 hover:opacity-90 transition-opacity">
                         <div className="p-2 rounded-lg flex items-center justify-center">
                             <img 
                                 src="/icon.png" 
@@ -30,101 +30,106 @@ export default function Footer() {
                                 className="w-10 h-9 object-contain" 
                             />
                         </div>
-                        <span className="font-bold text-lg text-white">
+                        <span className="font-bold text-lg md:text-xl text-white">
                             Tetsu<span className="text-cyan-400">Market</span>
                         </span>
                     </Link>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-400 leading-relaxed max-w-xl mx-auto">
                         Platform jual beli akun Games yang aman, cepat, dan terpercaya.
                     </p>
                 </div>
 
-                {/* 2. Peta Situs (Sesuai Navbar) */}
-                <div>
-                    <h5 className="font-bold text-white mb-3 text-sm">Peta Situs</h5>
-                    <ul className="space-y-2 text-xs">
-                        {navLinks.map((link) => (
-                            <li key={link.name}>
-                                <Link 
-                                    href={link.href}
-                                    target={link.target}
-                                    rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
+                {/* Responsive Grid: 2 Kolom di HP/Tablet, 4 Kolom di PC */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 md:gap-x-8 gap-y-8 pt-2">
+                    
+                    {/* 1. KOLOM 1: Sosial Media */}
+                    <div>
+                        <h5 className="font-bold text-white mb-3 md:mb-4 text-sm md:text-base">Sosial Media</h5>
+                        <ul className="space-y-2.5 text-xs md:text-sm">
+                            {socialLinks.map((social) => {
+                                const Icon = social.icon;
+                                return (
+                                    <li key={social.name}>
+                                        <a 
+                                            href={social.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 hover:text-cyan-400 transition-colors group"
+                                        >
+                                            <Icon className="w-4 h-4 md:w-4.5 md:h-4.5 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                                            <span>{social.name}</span>
+                                        </a>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+
+                    {/* 2. KOLOM 2: Dukungan (Di HP berada di kanan atas) */}
+                    <div>
+                        <h5 className="font-bold text-white mb-3 md:mb-4 text-sm md:text-base">Dukungan</h5>
+                        <ul className="space-y-2.5 text-xs md:text-sm">
+                            <li>
+                                <a 
+                                    href="https://wa.me/6285715338331" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
                                     className="hover:text-cyan-400 transition-colors"
                                 >
-                                    {link.name}
+                                    Whatsapp Customer Service
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* 3. KOLOM 3: Peta Situs (Di HP berada di kiri bawah) */}
+                    <div>
+                        <h5 className="font-bold text-white mb-3 md:mb-4 text-sm md:text-base">Peta Situs</h5>
+                        <ul className="space-y-2.5 text-xs md:text-sm">
+                            {navLinks.map((link) => (
+                                <li key={link.name}>
+                                    <Link 
+                                        href={link.href}
+                                        target={link.target}
+                                        rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
+                                        className="hover:text-cyan-400 transition-colors"
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* 4. KOLOM 4: Legalitas (Di HP berada di kanan bawah) */}
+                    <div>
+                        <h5 className="font-bold text-white mb-3 md:mb-4 text-sm md:text-base">Legalitas</h5>
+                        <ul className="space-y-2.5 text-xs md:text-sm">
+                            <li>
+                                <Link href="/syarat-ketentuan" className="hover:text-cyan-400 transition-colors">
+                                    Syarat & Ketentuan
                                 </Link>
                             </li>
-                        ))}
-                    </ul>
+                            <li>
+                                <Link href="/kebijakan-privasi" className="hover:text-cyan-400 transition-colors">
+                                    Kebijakan Privasi
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/disclaimer" className="hover:text-cyan-400 transition-colors">
+                                    Ketentuan Layanan
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                {/* 3. Legalitas */}
-                <div>
-                    <h5 className="font-bold text-white mb-3 text-sm">Legalitas</h5>
-                    <ul className="space-y-2 text-xs">
-                        <li>
-                            <Link href="/syarat-ketentuan" className="hover:text-cyan-400 transition-colors">
-                                Syarat & Ketentuan
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/kebijakan-privasi" className="hover:text-cyan-400 transition-colors">
-                                Kebijakan Privasi
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/disclaimer" className="hover:text-cyan-400 transition-colors">
-                                Ketentuan Layanan
-                            </Link>
-                        </li>
-                    </ul>
+                {/* Copyright Bottom */}
+                <div className="pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs md:text-sm text-slate-500 gap-4">
+                    <p>© 2026 TetsuMarket. All rights reserved.</p>
                 </div>
 
-                {/* 4. Dukungan */}
-                <div>
-                    <h5 className="font-bold text-white mb-3 text-sm">Dukungan</h5>
-                    <ul className="space-y-2 text-xs">
-                        <li>
-                            <a 
-                                href="https://wa.me/6285715338331" 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="hover:text-cyan-400 transition-colors"
-                            >
-                                Whatsapp Customer Service
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                {/* 5. Sosial Media */}
-                <div>
-                    <h5 className="font-bold text-white mb-3 text-sm">Sosial Media</h5>
-                    <ul className="space-y-2.5 text-xs">
-                        {socialLinks.map((social) => {
-                            const Icon = social.icon;
-                            return (
-                                <li key={social.name}>
-                                    <a 
-                                        href={social.href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 hover:text-cyan-400 transition-colors group"
-                                    >
-                                        <Icon className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors" />
-                                        <span>{social.name}</span>
-                                    </a>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-
-            </div>
-
-            {/* Copyright Bottom */}
-            <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>© 2026 TetsuMarket. All rights reserved.</p>
             </div>
         </footer>
     );

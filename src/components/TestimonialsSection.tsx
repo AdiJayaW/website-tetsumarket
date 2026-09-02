@@ -27,18 +27,18 @@ const stars = [];
 for (let i = 1; i <= 5; i++) {
     if (rating >= i) {
     stars.push(
-        <svg key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
+        <svg key={i} className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
     );
     } else if (rating >= i - 0.5) {
     stars.push(
-        <div key={i} className="relative w-3.5 h-3.5">
-        <svg className="w-3.5 h-3.5 text-slate-700 fill-slate-700" viewBox="0 0 20 20">
+        <div key={i} className="relative w-2.5 h-2.5 sm:w-3.5 sm:h-3.5">
+        <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-slate-700 fill-slate-700" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
         <div className="absolute top-0 left-0 w-1/2 overflow-hidden">
-            <svg className="w-3.5 h-3.5 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
+            <svg className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-amber-400 fill-amber-400" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
         </div>
@@ -46,7 +46,7 @@ for (let i = 1; i <= 5; i++) {
     );
     } else {
     stars.push(
-        <svg key={i} className="w-3.5 h-3.5 text-slate-700 fill-slate-700" viewBox="0 0 20 20">
+        <svg key={i} className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-slate-700 fill-slate-700" viewBox="0 0 20 20">
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
     );
@@ -54,9 +54,9 @@ for (let i = 1; i <= 5; i++) {
 }
 
 return (
-    <div className="flex items-center gap-1 my-1">
+    <div className="flex items-center gap-1 my-0.5 sm:my-1">
     <div className="flex items-center gap-0.5">{stars}</div>
-    <span className="text-[11px] font-semibold text-amber-400 ml-1">
+    <span className="text-[9px] sm:text-xs font-semibold text-amber-400 ml-0.5 sm:ml-1">
         {rating.toFixed(1)}
     </span>
     </div>
@@ -82,59 +82,57 @@ useEffect(() => {
 }, [reviews]);
 
 return (
-    <section className="py-16 px-4 max-w-7xl mx-auto">
+    <section className="py-8 sm:py-14 px-2 sm:px-4 max-w-7xl mx-auto">
     {/* Header */}
-    <div className="text-center mb-10">
-        <span className="text-xs font-semibold uppercase tracking-widest text-cyan-400">
+    <div className="text-center mb-5 sm:mb-8">
+        <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-cyan-400">
         TESTIMONI REAL
         </span>
-        <h2 className="text-3xl font-bold text-white mt-2">
+        <h2 className="text-lg sm:text-3xl font-bold text-white mt-0.5">
         Bukti Transaksi & Kepuasan Buyer
         </h2>
-        <p className="text-sm text-slate-400 mt-1">
+        <p className="text-[11px] sm:text-sm text-slate-400 mt-0.5">
         Geser atau gunakan tombol navigasi untuk melihat riwayat transaksi sukses di Tetsumarket
         </p>
     </div>
 
     {randomReviews.length === 0 ? (
-        <div className="text-center py-10 border border-dashed border-slate-800 rounded-2xl text-slate-500 text-sm">
+        <div className="text-center py-8 border border-dashed border-slate-800 rounded-2xl text-slate-500 text-xs sm:text-sm">
         Belum ada testimoni yang diunggah.
         </div>
     ) : !isMounted ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {reviews.slice(0, 4).map((_, idx) => (
+        <div className="grid grid-cols-3 gap-2 sm:gap-4">
+        {reviews.slice(0, 3).map((_, idx) => (
             <div
             key={idx}
-            className="bg-[#131B2E] border border-slate-800 rounded-2xl h-80 animate-pulse"
+            className="bg-[#131B2E] border border-slate-800 rounded-xl h-48 sm:h-72 animate-pulse"
             />
         ))}
         </div>
     ) : (
-        /* Wrapper Utama: Diberi padding samping (px-10 sm:px-12) agar tombol panah punya tempat melayang di luar */
-        <div className="relative px-10 sm:px-12">
-        
-        {/* TOMBOL PANAH KIRI (KUSTOM, DI LUAR CAROUSEL) */}
+        <div className="relative px-6 sm:px-10">
+        {/* TOMBOL PANAH KIRI */}
         <button
             id="testimonial-prev"
             aria-label="Previous slide"
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#131B2E] border border-slate-700 text-cyan-400 flex items-center justify-center hover:bg-cyan-950 transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-6 h-6 sm:w-9 sm:h-9 rounded-full bg-[#131B2E] border border-slate-700 text-cyan-400 flex items-center justify-center hover:bg-cyan-950 transition-colors shadow-md disabled:opacity-30 disabled:cursor-not-allowed"
         >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
         </button>
 
-        {/* TOMBOL PANAH KANAN (KUSTOM, DI LUAR CAROUSEL) */}
+        {/* TOMBOL PANAH KANAN */}
         <button
             id="testimonial-next"
             aria-label="Next slide"
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-[#131B2E] border border-slate-700 text-cyan-400 flex items-center justify-center hover:bg-cyan-950 transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-6 h-6 sm:w-9 sm:h-9 rounded-full bg-[#131B2E] border border-slate-700 text-cyan-400 flex items-center justify-center hover:bg-cyan-950 transition-colors shadow-md disabled:opacity-30 disabled:cursor-not-allowed"
         >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
         </button>
 
         <Swiper
             modules={[Autoplay, Pagination, Navigation]}
-            spaceBetween={20}
-            slidesPerView={1}
+            spaceBetween={8}
+            slidesPerView={3}
             autoplay={{
             delay: 3500,
             disableOnInteraction: false,
@@ -145,16 +143,16 @@ return (
             nextEl: '#testimonial-next',
             }}
             breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 }, // Tepat 4 kartu di layar desktop
+            640: { slidesPerView: 3, spaceBetween: 12 },
+            1024: { slidesPerView: 4, spaceBetween: 16 },
             }}
-            className="!pb-12
+            className="!pb-8 sm:!pb-10
             [&_.swiper-pagination]:!bottom-0 
             [&_.swiper-pagination-bullet]:!bg-slate-600 
             [&_.swiper-pagination-bullet]:!opacity-40 
             [&_.swiper-pagination-bullet-active]:!bg-cyan-400 
             [&_.swiper-pagination-bullet-active]:!opacity-100 
-            [&_.swiper-pagination-bullet-active]:!w-6 
+            [&_.swiper-pagination-bullet-active]:!w-4 sm:[&_.swiper-pagination-bullet-active]:!w-6
             [&_.swiper-pagination-bullet-active]:!rounded-full"
         >
             {randomReviews.map((item) => {
@@ -168,23 +166,21 @@ return (
 
             return (
                 <SwiperSlide key={item.id}>
-                {/* KARTU ASLI AWAL DARI ANDA (TIDAK DIUBAH SAMA SEKALI) */}
-                <div className="bg-[#131B2E] border border-slate-800 hover:border-cyan-500/50 rounded-2xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
-                    
+                <div className="bg-[#131B2E] border border-slate-800 hover:border-cyan-500/50 rounded-xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
                     {/* Frame Gambar Portrait */}
                     <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
                     <Image
                         src={validImage}
                         alt={validCaption}
                         fill
-                        sizes="(max-width: 768px) 100vw, 25vw"
+                        sizes="(max-width: 768px) 33vw, 25vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
 
                     {/* BADGE OVERLAY: Transaksi Berhasil */}
-                    <div className="absolute top-2.5 right-2.5 bg-emerald-500/90 backdrop-blur-md text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1 shadow-lg border border-emerald-400/30">
+                    <div className="absolute top-1 right-1 sm:top-2 sm:right-2 bg-emerald-500/95 text-white text-[7px] sm:text-xs font-bold px-1 py-0.5 sm:px-2 sm:py-1 rounded-md flex items-center gap-0.5 sm:gap-1 shadow-md">
                         <svg
-                        className="w-3 h-3 text-white"
+                        className="w-2 h-2 sm:w-3.5 sm:h-3.5 text-white"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -201,47 +197,30 @@ return (
                     </div>
 
                     {/* Deskripsi, Rating & Badge Rekber */}
-                    <div className="p-3.5 bg-[#0B0E17]/80 flex flex-col justify-between flex-1">
+                    <div className="p-1.5 sm:p-3.5 bg-[#0B0E17]/80 flex flex-col justify-between flex-1">
                     <div>
-                        <div className="flex items-center justify-between">
-                        <span className="block text-xs font-bold text-cyan-400">
-                            {validName}
+                        <span className="block text-[10px] sm:text-sm font-bold text-cyan-400 truncate">
+                        {validName}
                         </span>
-                        </div>
 
                         {/* Komponen Bintang Rating */}
                         <RatingStars rating={validRating} />
 
-                        <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed mt-1">
+                        <p className="text-[9px] sm:text-xs text-slate-300 line-clamp-2 leading-tight sm:leading-relaxed mt-0.5 sm:mt-1">
                         {validCaption}
                         </p>
                     </div>
 
                     {/* BADGE REKBER BY */}
-                    <div className="mt-3 pt-2.5 border-t border-slate-800/80 flex items-center justify-between">
-                        <span className="text-[10px] text-slate-400 font-medium">
+                    <div className="mt-1.5 sm:mt-3 pt-1 sm:pt-2 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-1">
+                        <span className="text-[8px] sm:text-xs text-slate-400 font-medium">
                         Rekber by:
                         </span>
-                        <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-cyan-300 bg-cyan-950/60 border border-cyan-800/60 px-2 py-0.5 rounded-md">
-                        <svg
-                            className="w-3 h-3 text-cyan-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                            />
-                        </svg>
+                        <span className="inline-flex items-center gap-0.5 text-[8px] sm:text-xs font-semibold text-cyan-300 bg-cyan-950/60 border border-cyan-800/60 px-1 py-0.5 sm:px-2 sm:py-1 rounded">
                         {validRekber}
                         </span>
                     </div>
-
                     </div>
-
                 </div>
                 </SwiperSlide>
             );
