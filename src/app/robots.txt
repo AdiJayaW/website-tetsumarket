@@ -8,9 +8,9 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
       disallow: [
-        '/api/',       // Mencegah Google meng-crawl endpoint API backend
-        '/admin/',     // Mencegah Google mengindeks halaman admin (jika ada)
-        '/_next/',    // Mencegah bot membuang crawl budget pada asset internal Next.js
+        '/api/',       
+        '/admin/',     
+        '/_next/',
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,

@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tetsumarket",
-  description: "Website Tetsumarket",
+  title: 'Tetsumarket - Jasa Rekber & Marketplace Game Terpercaya',
+  description: 'Tempat jual beli akun game dan jasa rekber aman di Tetsumarket. Proses cepat dan terpercaya.'
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
