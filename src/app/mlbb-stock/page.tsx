@@ -46,9 +46,12 @@ export default function MLBBStockPage() {
     useEffect(() => {
         const fetchAccounts = async () => {
             setLoading(true);
+            
+            // Ambil data dari tabel 'accounts' untuk kategori 'mlbb'
             const { data, error } = await supabase
-                .from('mlbb-acc')
-                .select('*');
+                .from('accounts')
+                .select('*')
+                .eq('category', 'mlbb');
 
             if (error) {
                 console.error('Error fetching accounts:', error.message);
@@ -58,13 +61,14 @@ export default function MLBBStockPage() {
                     code: item.code || 'ML-000',
                     title: item.title || 'Akun Mobile Legends',
                     price: Number(item.price) || 0,
-                    originalPrice: item.original_price ?? item.originalPrice ?? undefined,
+                    originalPrice: item.original_price ?? undefined,
                     discount: item.discount || undefined,
-                    heroCount: item.hero_count ?? item.heroCount ?? 0,
-                    skinCount: item.skin_count ?? item.skinCount ?? 0,
+                    heroCount: item.hero_count ?? 0,
+                    skinCount: item.skin_count ?? 0,
                     rank: item.rank || 'Unranked',
                     image: item.image || '/images/mlbb_banner.webp',
                     href: `/mlbb-stock/${item.id}`,
+                    status: item.status || 'available',
                 }));
                 setAccounts(formattedData);
             }
@@ -91,8 +95,10 @@ export default function MLBBStockPage() {
                                 (acc.code || '').toLowerCase().includes(search.toLowerCase());
             const matchMinPrice = rawMin ? acc.price >= rawMin : true;
             const matchMaxPrice = rawMax ? acc.price <= rawMax : true;
-            const matchMinHero = minHero ? acc.heroCount >= Number(minHero) : true;
-            const matchMinSkin = minSkin ? acc.skinCount >= Number(minSkin) : true;
+            
+            // Amankan dengan ?? 0 agar TypeScript tidak error undefined
+            const matchMinHero = minHero ? (acc.heroCount ?? 0) >= Number(minHero) : true;
+            const matchMinSkin = minSkin ? (acc.skinCount ?? 0) >= Number(minSkin) : true;
 
             return matchSearch && matchMinPrice && matchMaxPrice && matchMinHero && matchMinSkin;
         });
@@ -224,7 +230,7 @@ export default function MLBBStockPage() {
                     )}
                 </div>
 
-                {/* Account Grid: 2 kolom di Mobile, 3-4 kolom di Laptop/PC */}
+                {/* Account Grid */}
                 {loading ? (
                     <div className="flex flex-col items-center justify-center py-20 text-slate-400">
                         <Loader2 className="w-8 h-8 animate-spin text-cyan-400 mb-2" />

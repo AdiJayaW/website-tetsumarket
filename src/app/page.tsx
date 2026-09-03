@@ -16,13 +16,13 @@ export default async function Home() {
     supabase.from('categories').select('*'),
     supabase.from('faqs').select('id, question, answer').order('order_index', { ascending: true }),
     supabase.from('testimonials').select('*'),
-    supabase.from('accounts').select('id', { count: 'exact', head: true }),
+    supabase.from('accounts').select('id', { count: 'exact', head: true }).eq('status', 'available'),
   ]);
 
   const categories = categoriesRes.data || [];
   const faqs = faqsRes.data || [];
   const testimonials = testimonialsRes.data || [];
-  const activeListingsCount = accountsRes.count ?? 4;
+  const activeListingsCount = accountsRes.count ?? 0;
 
   const totalGames = categories.length;
   // Penataan grid responsif: 2 kolom di HP (grid-cols-2), 3 kolom di desktop
