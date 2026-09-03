@@ -1,11 +1,10 @@
 import { MetadataRoute } from 'next';
-// Import client Supabase jika ingin menarik halaman detail produk/akun dinamis:
-// import { createClient } from '@/utils/supabase/server'; 
+import { createClient } from '@/lib/supabase/server';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 const baseUrl = 'https://tetsumarket.my.id';
 
-// 1. Halaman Statis Utama
+// 1. Halaman Statis Utama & Halaman Katalog Utama
 const staticRoutes: MetadataRoute.Sitemap = [
     {
     url: `${baseUrl}`,
@@ -14,35 +13,38 @@ const staticRoutes: MetadataRoute.Sitemap = [
     priority: 1.0,
     },
     {
-    url: `${baseUrl}/faq`,
+    url: `${baseUrl}/mlbb-stock`, // Sesuaikan jika kamu punya URL khusus katalog MLBB (misal: /catalog atau /mlbb)
     lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.8,
-    },
-    {
-    url: `${baseUrl}/testimoni`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.8,
+    changeFrequency: 'daily',
+    priority: 0.9,
     },
 ];
 
-/* 
-// 2. Jika Punya Halaman Detail Produk/Akun Dinamis dari Supabase (Contoh):
-// Buka komentar kode ini jika kamu buat halaman seperti /akun/[id]
+// 2. Halaman Dinamis (Detail Stok Akun MLBB)
+let dynamicRoutes: MetadataRoute.Sitemap = [];
 
-const supabase = await createClient();
-const { data: accounts } = await supabase.from('accounts').select('id, updated_at');
+try {
+    const supabase = await createClient();
 
-const dynamicRoutes: MetadataRoute.Sitemap = (accounts || []).map((item) => ({
-    url: `${baseUrl}/akun/${item.id}`,
-    lastModified: item.updated_at ? new Date(item.updated_at) : new Date(),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-}));
+    // Mengambil data stok akun dari Supabase
+    const { data: accounts, error } = await supabase
+    .from('accounts') // Ganti dengan nama tabel akunmu
+    .select('id, updated_at, created_at')
+    .eq('status', 'available'); // Opsional: Hanya masukkan akun yang ready stock/belum terjual
 
+    if (!error && accounts) {
+    dynamicRoutes = accounts.map((item) => ({
+        // Sesuaikan struktur URL detail akunmu (contoh: /akun/123 atau /mlbb/123)
+        url: `${baseUrl}/akun/${item.id}`, 
+        lastModified: new Date(item.updated_at || item.created_at || Date.now()),
+        changeFrequency: 'daily',
+        priority: 0.7,
+    }));
+    }
+} catch (err) {
+    console.error('Gagal mengambil data sitemap dari Supabase:', err);
+}
+
+// Gabungkan halaman statis dan dinamis
 return [...staticRoutes, ...dynamicRoutes];
-*/
-
-return staticRoutes;
 }
