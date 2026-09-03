@@ -27,10 +27,10 @@ export default function Footer() {
                             <img 
                                 src="/icon.png" 
                                 alt="Shield Icon" 
-                                className="w-10 h-9 object-contain" 
+                                className="w-10 h-12 md:w-12 md:h-14 lg:w-14 lg:h-16 object-contain" 
                             />
                         </div>
-                        <span className="font-bold text-lg md:text-xl text-white">
+                        <span className="font-bold text-lg md:text-2xl lg:text-3xl text-white">
                             Tetsu<span className="text-cyan-400">Market</span>
                         </span>
                     </Link>

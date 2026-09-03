@@ -23,6 +23,7 @@ return (
         {/* GARIS PENYAMBUNG DESKTOP (Horizontal Lurus Slim) */}
         <div className="hidden md:block absolute top-6 md:top-10 left-[12.5%] right-[12.5%] h-[1.5px] md:h-[2px] bg-gradient-to-r from-purple-500 via-cyan-400 via-emerald-500 to-amber-500 z-0" />
 
+        {/* GARIS PENYAMBUNG MOBILE (Bentuk ']' Tegak Presisi) */}
         <svg 
         className="md:hidden absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible" 
         viewBox="0 0 100 100" 
@@ -30,19 +31,19 @@ return (
         >
         <defs>
             {/* 1. Gradasi 01 -> 02 (Ungu -> Cyan) */}
-            <linearGradient id="gradTop" x1="25" y1="8.5" x2="80" y2="8.5" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gradTop" x1="25" y1="8.5" x2="75" y2="8.5" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#a855f7" />  {/* Ungu 01 */}
             <stop offset="100%" stopColor="#38bdf8" /> {/* Cyan 02 */}
             </linearGradient>
 
-            {/* 2. Gradasi Lengkungan 02 -> 03 (Cyan -> Hijau) */}
-            <linearGradient id="gradCurve" x1="80" y1="8.5" x2="70" y2="65" gradientUnits="userSpaceOnUse">
+            {/* 2. Gradasi Siku ']' 02 -> 03 (Cyan -> Hijau) */}
+            <linearGradient id="gradBracket" x1="75" y1="8.5" x2="75" y2="65" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#38bdf8" />  {/* Cyan 02 */}
             <stop offset="100%" stopColor="#22c55e" /> {/* Hijau 03 */}
             </linearGradient>
 
             {/* 3. Gradasi 03 -> 04 (Hijau -> Oranye) */}
-            <linearGradient id="gradBottom" x1="70" y1="65" x2="25" y2="65" gradientUnits="userSpaceOnUse">
+            <linearGradient id="gradBottom" x1="75" y1="65" x2="25" y2="65" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stopColor="#22c55e" />  {/* Hijau 03 */}
             <stop offset="100%" stopColor="#f59e0b" /> {/* Oranye 04 */}
             </linearGradient>
@@ -50,7 +51,7 @@ return (
 
         {/* Garis Atas (01 -> 02) */}
         <path
-            d="M 25 8.5 H 80"
+            d="M 25 8.5 H 75"
             fill="none"
             stroke="url(#gradTop)"
             strokeWidth="1.5"
@@ -58,19 +59,20 @@ return (
             strokeLinecap="round"
         />
 
-        {/* Lengkungan Kanan (02 -> 03) */}
+        {/* Penghubung Bentuk Siku ']' (02 -> 03) */}
         <path
-            d="M 80 8.5 C 98 8.5, 100 75, 70 65"
+            d="M 75 8.5 H 92 V 65 H 75"
             fill="none"
-            stroke="url(#gradCurve)"
+            stroke="url(#gradBracket)"
             strokeWidth="1.5"
             vectorEffect="non-scaling-stroke"
             strokeLinecap="round"
+            strokeLinejoin="round"
         />
 
         {/* Garis Bawah (03 -> 04) */}
         <path
-            d="M 70 65 H 25"
+            d="M 75 65 H 25"
             fill="none"
             stroke="url(#gradBottom)"
             strokeWidth="1.5"
@@ -85,7 +87,7 @@ return (
             <div key={idx} className={`flex flex-col items-center text-center ${item.gridPos}`}>
             {/* Circle Number */}
             <div
-                className={`w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-full border-2 md:border-[3px] bg-[#0B0E17] flex items-center justify-center font-bold text-sm sm:text-base md:text-xl lg:text-2xl mb-3 md:mb-5 ${item.borderColor} ${item.textColor}${item.glow} transition-all duration-300`}
+                className={`w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20 rounded-full border-2 md:border-[3px] bg-[#0B0E17] flex items-center justify-center font-bold text-sm sm:text-base md:text-xl lg:text-2xl mb-3 md:mb-5 ${item.borderColor} ${item.textColor} ${item.glow} transition-all duration-300`}
             >
                 {item.step}
             </div>

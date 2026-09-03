@@ -21,7 +21,7 @@ return (
         
         {/* Kiri: Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-        <div className="p-1.5 bg-slate-800/50 border border-slate-700/50 rounded-lg flex items-center justify-center">
+        <div className="p-1.5 flex items-center justify-center">
             <img 
             src="/icon.png" 
             alt="Shield Icon" 

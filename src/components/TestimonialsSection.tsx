@@ -147,6 +147,8 @@ return (
             1024: { slidesPerView: 4, spaceBetween: 16 },
             }}
             className="!pb-8 sm:!pb-10
+            [&_.swiper-wrapper]:!items-stretch
+            [&_.swiper-slide]:!h-auto
             [&_.swiper-pagination]:!bottom-0 
             [&_.swiper-pagination-bullet]:!bg-slate-600 
             [&_.swiper-pagination-bullet]:!opacity-40 
@@ -165,10 +167,10 @@ return (
             const validRekber = item.rekber_by || 'Admin Tetsumarket';
 
             return (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide key={item.id} className="!h-auto">
                 <div className="bg-[#131B2E] border border-slate-800 hover:border-cyan-500/50 rounded-xl overflow-hidden transition-all duration-300 group flex flex-col h-full">
                     {/* Frame Gambar Portrait */}
-                    <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
+                    <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden flex-shrink-0">
                     <Image
                         src={validImage}
                         alt={validCaption}
@@ -206,7 +208,8 @@ return (
                         {/* Komponen Bintang Rating */}
                         <RatingStars rating={validRating} />
 
-                        <p className="text-[9px] sm:text-xs text-slate-300 line-clamp-2 leading-tight sm:leading-relaxed mt-0.5 sm:mt-1">
+                        {/* Caption dengan tinggi minimum seragam */}
+                        <p className="text-[9px] sm:text-xs text-slate-300 line-clamp-2 leading-tight sm:leading-relaxed mt-0.5 sm:mt-1 min-h-[24px] sm:min-h-[36px]">
                         {validCaption}
                         </p>
                     </div>
