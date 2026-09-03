@@ -75,8 +75,8 @@ if (totalSold > 0) {
 
 const stats = [
     { value: totalSold.toString(), label: 'Akun Terjual' },
-    { value: happyCustomers.toString(), label: 'Happy Customers' },
-    { value: activeListingsCount.toString(), label: 'Active Listings' },
+    { value: happyCustomers.toString(), label: 'Customer Senang' },
+    { value: activeListingsCount.toString(), label: 'Akun Tersedia' },
     { value: `${satisfactionRate.toFixed(1)}%`, label: 'Kepuasan Pengguna' },
 ];
 
