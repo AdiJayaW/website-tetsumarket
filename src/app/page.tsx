@@ -75,11 +75,6 @@ export default async function Home() {
         <FeaturesSection />
       </ScrollReveal>
 
-      {/* Process Section */}
-      <ScrollReveal>
-        <ProcessSection />
-      </ScrollReveal>
-
       {/* Testimonials */}
       <ScrollReveal>
         <TestimonialsSection reviews={testimonials} />
