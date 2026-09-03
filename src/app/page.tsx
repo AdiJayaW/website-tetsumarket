@@ -4,7 +4,6 @@ import Hero from '@/components/Hero';
 import StatsSection from '@/components/StatsSection';
 import GameCard from '@/components/GameCard';
 import FeaturesSection from '@/components/FeaturesSection';
-import ProcessSection from '@/components/ProcessSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import FaqSection from '@/components/FaqSection';
 import Footer from '@/components/Footer';

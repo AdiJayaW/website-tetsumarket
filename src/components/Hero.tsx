@@ -15,7 +15,7 @@ return (
         </h1>
     
         <p className="mt-3 text-slate-400 text-xs sm:text-md md:text-base max-w-xl mx-auto leading-relaxed">
-        Dapatkan akun Games impian Anda atau jual akun Anda dengan mudah dijamin aman, tanpa ribet, dan transaksi terverifikasi.
+        Platform jual beli akun Mobile Legends & game terpercaya. Beli akun MLBB murah, proses instan, garansi anti-HB 100%, dan transaksi terverifikasi.
         </p>
 
         {/* Buttons */}
