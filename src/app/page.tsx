@@ -24,13 +24,11 @@ export default async function Home() {
   const testimonials = testimonialsRes.data || [];
   const activeListingsCount = accountsRes.count ?? 0;
 
-  const totalGames = categories.length;
-  // Penataan grid responsif: 2 kolom di HP (grid-cols-2), 3 kolom di desktop
-  const gridCols = totalGames <= 4 ? "grid-cols-2 sm:grid-cols-2" : "grid-cols-2 sm:grid-cols-2 lg:grid-cols-3";
-  const containerWidth = totalGames <= 4 ? "max-w-4xl" : "max-w-7xl";
+  // Penataan grid responsif: 2 kolom di HP (grid-cols-2), 3 kolom di PC (md:grid-cols-3)
+  const gridCols = "grid-cols-2 md:grid-cols-3";
+  const containerWidth = "max-w-6xl";
 
   return (
-    // Ditambahkan pt-20 sm:pt-24 agar tidak terhalang navbar
     <main className="min-h-screen bg-[#0B0E17] text-slate-100 font-sans selection:bg-purple-500 selection:text-white overflow-hidden pt-20 sm:pt-24">
       <Navbar />
 
