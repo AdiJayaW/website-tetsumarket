@@ -84,9 +84,9 @@ return (
 
             {/* Isi Jawaban Accordion */}
             {isOpen && (
-                <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3 sm:pt-4">
-                {item.answer}
-                </div>
+            <div className="px-4 pb-4 sm:px-5 sm:pb-5 md:px-6 md:pb-6 text-xs sm:text-sm md:text-base text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3 sm:pt-4 whitespace-pre-line">
+            {item.answer}
+            </div>
             )}
             </div>
         );
