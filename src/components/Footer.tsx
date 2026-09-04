@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { FaInstagram, FaTiktok, FaFacebook, FaDiscord } from 'react-icons/fa6';
 
 const navLinks = [
@@ -16,6 +19,8 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+    const pathname = usePathname();
+
     return (
         <footer className="mt-20 border-t border-slate-800/80 bg-[#080B12] pt-12 pb-8 text-slate-400 text-sm">
             <div className="max-w-7xl mx-auto px-6 space-y-8 md:space-y-10">
@@ -35,7 +40,7 @@ export default function Footer() {
                         </span>
                     </Link>
                     <p className="text-xs md:text-sm text-slate-400 leading-relaxed max-w-xl mx-auto">
-                        Platform jual beli akun Games yang aman, cepat, dan terpercaya.
+                        Tetsumarket adalah pusat jual beli akun game dan layanan Rekber resmi yang aman, transparan, dan praktis. Mulai dari Mobile Legends, PUBG Mobile, sampai game favorit kamu lainnya. Semua transaksi di Tetsumarket dijamin dengan sistem verifikasi ketat dan garansi penuh demi kenyamanan para gamer di Indonesia.
                     </p>
                 </div>
 
@@ -106,17 +111,26 @@ export default function Footer() {
                         <h5 className="font-bold text-white mb-3 md:mb-4 text-sm md:text-base">Legalitas</h5>
                         <ul className="space-y-2.5 text-xs md:text-sm">
                             <li>
-                                <Link href="/syarat-ketentuan" className="hover:text-cyan-400 transition-colors">
+                                <Link 
+                                    href={`/syarat-ketentuan?from=${encodeURIComponent(pathname || '/')}`} 
+                                    className="hover:text-cyan-400 transition-colors"
+                                >
                                     Syarat & Ketentuan
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/kebijakan-privasi" className="hover:text-cyan-400 transition-colors">
+                                <Link 
+                                    href={`/kebijakan-privasi?from=${encodeURIComponent(pathname || '/')}`} 
+                                    className="hover:text-cyan-400 transition-colors"
+                                >
                                     Kebijakan Privasi
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/disclaimer" className="hover:text-cyan-400 transition-colors">
+                                <Link 
+                                    href={`/disclaimer?from=${encodeURIComponent(pathname || '/')}`} 
+                                    className="hover:text-cyan-400 transition-colors"
+                                >
                                     Ketentuan Layanan
                                 </Link>
                             </li>

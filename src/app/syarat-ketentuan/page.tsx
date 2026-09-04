@@ -16,7 +16,16 @@ title: 'Syarat dan Ketentuan | Tetsumarket',
 description: 'Aturan penggunaan, hak, kewajiban, serta kebijakan garansi dan transaksi resmi di platform Tetsumarket.',
 };
 
-export default function TermsAndConditionsPage() {
+type PageProps = {
+searchParams: Promise<{ from?: string }> | { from?: string };
+};
+
+export default async function TermsAndConditionsPage({ searchParams }: PageProps) {
+const resolvedParams = await Promise.resolve(searchParams);
+const fromPath = resolvedParams?.from || '/';
+
+// Penentuan link & label kembali secara otomatis
+const backLabel = fromPath === '/mlbb-stock' ? 'Kembali ke Katalog' : 'Kembali ke Beranda';
 const lastUpdated = "4 September 2026";
 
 return (
@@ -28,10 +37,10 @@ return (
         {/* Navigasi & Header */}
         <div className="mb-8">
         <Link 
-            href="/mlbb-stock" 
+            href={fromPath} 
             className="inline-flex items-center gap-2 text-slate-400 hover:text-cyan-400 text-xs sm:text-sm font-medium mb-4 transition-colors"
         >
-            <ArrowLeft className="w-4 h-4" /> Kembali ke Katalog
+            <ArrowLeft className="w-4 h-4" /> {backLabel}
         </Link>
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
@@ -69,7 +78,7 @@ return (
             <span className="text-cyan-400 font-mono">01.</span> Pendahuluan & Ketentuan Umum
             </h2>
             <p>
-            <strong className="text-cyan-400 font-bold">Tetsumarket</strong> (selanjutnya disebut <span className="text-white font-medium">“Kami”</span> atau <span className="text-white font-medium">“Platform”</span>) adalah platform perantara transaksi (<span className="text-cyan-300 font-semibold">Rekber</span>) dan marketplace jual beli akun gim (<span className="italic">game account</span>).
+            <strong className="text-cyan-400 font-bold">Tetsumarket</strong> (selanjutnya disebut <span className="text-white font-medium">“Kami”</span> atau <span className="text-white font-medium">“Platform”</span>) adalah platform perantara transaksi (<span className="text-cyan-300 font-semibold">Rekber / Escrow</span>) dan marketplace jual beli akun gim (<span className="italic">game account</span>).
             </p>
             <p>
             Dokumen Syarat dan Ketentuan ini merupakan perjanjian yang mengikat secara hukum antara Pengguna (<span className="text-white font-medium">“Anda”</span>) dan Tetsumarket. Dengan mengakses atau menggunakan fitur di platform Kami, Anda menyatakan bersedia tunduk pada seluruh regulasi yang tercantum dalam aturan ini serta peraturan perundang-undangan yang berlaku di Republik Indonesia.
@@ -96,7 +105,7 @@ return (
             </li>
             <li className="flex items-start gap-2">
                 <span className="text-cyan-400 font-bold">•</span>
-                <span><strong className="text-cyan-400 font-bold">Rekber (Rekening Bersama / Rekber):</strong> Layanan penampungan dana sementara oleh Tetsumarket untuk menjamin keamanan transaksi antara Penjual dan Pembeli.</span>
+                <span><strong className="text-cyan-400 font-bold">Rekber (Rekening Bersama / Escrow):</strong> Layanan penampungan dana sementara oleh Tetsumarket untuk menjamin keamanan transaksi antara Penjual dan Pembeli.</span>
             </li>
             <li className="flex items-start gap-2">
                 <span className="text-rose-400 font-bold">•</span>
@@ -237,7 +246,7 @@ return (
             </p>
             </div>
             <p>
-            Tetsumarket bertindak sebagai perantara transaksi (<span className="italic">Rekber</span>). Tanggung jawab maksimal Tetsumarket atas sengketa yang timbul dibatasi sebesar nilai nominal transaksi yang dilakukan oleh Pengguna pada transaksi terkait.
+            Tetsumarket bertindak sebagai perantara transaksi (<span className="italic">escrow</span>). Tanggung jawab maksimal Tetsumarket atas sengketa yang timbul dibatasi sebesar nilai nominal transaksi yang dilakukan oleh Pengguna pada transaksi terkait.
             </p>
         </section>
 
