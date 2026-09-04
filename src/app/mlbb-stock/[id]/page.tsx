@@ -114,7 +114,7 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
         : null;
 
     // Link WhatsApp otomatis mencantumkan Kode Akun & Harga
-    const waNumber = '6281234567890'; // Ganti dengan nomor WA Admin-mu
+    const waNumber = '6285715338331'; // Ganti dengan nomor WA Admin-mu
     const waMessage = encodeURIComponent(
         `Halo Admin Tetsumarket, saya mau order akun Mobile Legends ini:\n\n` +
         `• Kode Akun: #${account.code}\n` +
