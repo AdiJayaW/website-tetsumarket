@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Tetsumarket',
-  description: 'Tempat jual beli akun game dan jasa rekber aman di Tetsumarket. Proses cepat dan terpercaya.'
+  title: 'Jual Beli Akun MLBB Murah & Garansi Aman | Tetsumarket',
+  description: 'Tempat jual beli akun Mobile Legends (MLBB) terpercaya. Dapatkan akun MLBB impianmu dengan sistem rekber resmi, garansi, dan harga bersaing.',
+  keywords: ['jual beli mlbb', 'jual akun ml', 'beli akun mobile legends', 'rekber mlbb', 'tetsumarket'],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
