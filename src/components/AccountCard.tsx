@@ -17,6 +17,7 @@ export interface AccountCardProps {
     image: string;
     href?: string;
     status?: string; // Tambahan prop status
+    views?: number;  // Tambahan prop views untuk sistem sorting popularitas
 }
 
 export default function AccountCard({

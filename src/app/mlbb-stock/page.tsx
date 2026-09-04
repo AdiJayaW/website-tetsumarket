@@ -69,6 +69,7 @@ export default function MLBBStockPage() {
                     image: item.image || '/images/mlbb_banner.webp',
                     href: `/mlbb-stock/${item.id}`,
                     status: item.status || 'available',
+                    views: item.views ?? 0, // <-- [PERUBAHAN 1] Membaca data views dari Supabase
                 }));
                 setAccounts(formattedData);
             }
@@ -90,18 +91,47 @@ export default function MLBBStockPage() {
         const rawMin = parseRawNumber(minPrice);
         const rawMax = parseRawNumber(maxPrice);
 
-        return accounts.filter((acc) => {
-            const matchSearch = (acc.title || '').toLowerCase().includes(search.toLowerCase()) || 
-                                (acc.code || '').toLowerCase().includes(search.toLowerCase());
-            const matchMinPrice = rawMin ? acc.price >= rawMin : true;
-            const matchMaxPrice = rawMax ? acc.price <= rawMax : true;
-            
-            // Amankan dengan ?? 0 agar TypeScript tidak error undefined
-            const matchMinHero = minHero ? (acc.heroCount ?? 0) >= Number(minHero) : true;
-            const matchMinSkin = minSkin ? (acc.skinCount ?? 0) >= Number(minSkin) : true;
+        return accounts
+            .filter((acc) => {
+                const matchSearch = (acc.title || '').toLowerCase().includes(search.toLowerCase()) || 
+                                    (acc.code || '').toLowerCase().includes(search.toLowerCase());
+                const matchMinPrice = rawMin ? acc.price >= rawMin : true;
+                const matchMaxPrice = rawMax ? acc.price <= rawMax : true;
+                
+                // Amankan dengan ?? 0 agar TypeScript tidak error undefined
+                const matchMinHero = minHero ? (acc.heroCount ?? 0) >= Number(minHero) : true;
+                const matchMinSkin = minSkin ? (acc.skinCount ?? 0) >= Number(minSkin) : true;
 
-            return matchSearch && matchMinPrice && matchMaxPrice && matchMinHero && matchMinSkin;
-        });
+                return matchSearch && matchMinPrice && matchMaxPrice && matchMinHero && matchMinSkin;
+            })
+            .sort((a, b) => {
+                const isASold = a.status?.toLowerCase() === 'sold';
+                const isBSold = b.status?.toLowerCase() === 'sold';
+
+                // 1. Akun 'sold' SELALU ditaruh di paling belakang
+                if (isASold && !isBSold) return 1;
+                if (!isASold && isBSold) return -1;
+
+                // 2. [PERUBAHAN 2] PRIORITAS UTAMA: views terbanyak (paling sering diklik)
+                const viewsA = a.views ?? 0;
+                const viewsB = b.views ?? 0;
+                if (viewsB !== viewsA) {
+                    return viewsB - viewsA;
+                }
+
+                // 3. Cadangan 1: Jika views sama, urutkan berdasarkan Skin Terbanyak
+                if (b.skinCount !== a.skinCount) {
+                    return b.skinCount - a.skinCount;
+                }
+
+                // 4. Cadangan 2: Harga Termahal
+                if (b.price !== a.price) {
+                    return b.price - a.price;
+                }
+
+                // 5. Cadangan 3: Hero Terbanyak
+                return b.heroCount - a.heroCount;
+            });
     }, [accounts, search, minPrice, maxPrice, minHero, minSkin]);
 
     return (
