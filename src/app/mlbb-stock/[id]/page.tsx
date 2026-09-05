@@ -138,10 +138,10 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
     const waUrl = `https://wa.me/${waNumber}?text=${waMessage}`;
 
     return (
-        <main className="min-h-screen bg-[#0B0E17] text-slate-100 font-sans pt-20 sm:pt-24 lg:pt-20 pb-16">
+        <main className="min-h-screen bg-[#0B0E17] text-slate-100 font-sans pt-20 sm:pt-24 lg:pt-20 pb-16 w-full max-w-full overflow-x-hidden">
             <Navbar />
 
-            <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full overflow-hidden">
                 
                 {/* Tombol Kembali */}
                 <Link 
@@ -151,26 +151,27 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
                     <ArrowLeft className="w-4 h-4" /> Kembali ke Katalog MLBB
                 </Link>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start w-full">
                     
-                    {/* KELOMPOK 1: Carousel + Info + Stats + Deskripsi (Order 1 di HP, Kanan Atas di PC) */}
-                    <div className="order-1 lg:order-2 lg:col-span-7 lg:col-start-6 space-y-4 sm:space-y-5">
+                    {/* KELOMPOK 1: Carousel + Info + Stats + Deskripsi */}
+                    <div className="order-1 lg:order-2 lg:col-span-7 lg:col-start-6 space-y-4 sm:space-y-5 w-full min-w-0">
                         
-                        {/* Carousel Gambar */}
-                        <div className="flex items-center justify-center gap-2 sm:gap-4">
+                        {/* Carousel Gambar (Diperbaiki agar pas di HP) */}
+                        <div className="flex items-center justify-center gap-1 sm:gap-4 w-full">
                             {allImages.length > 1 ? (
                                 <button
                                     onClick={prevImage}
-                                    className="p-2 sm:p-3 text-white hover:text-cyan-400 transition-colors shrink-0"
+                                    className="p-1.5 sm:p-3 text-white hover:text-cyan-400 transition-colors shrink-0"
                                     aria-label="Previous Image"
                                 >
-                                    <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10" />
+                                    <ChevronLeft className="w-6 h-6 sm:w-10 sm:h-10" />
                                 </button>
                             ) : (
-                                <div className="w-8 sm:w-10 shrink-0" />
+                                <div className="w-6 sm:w-10 shrink-0" />
                             )}
 
-                            <div className="relative aspect-[3/4] w-full max-w-xs sm:max-w-sm lg:max-w-[280px] bg-[#131B2E] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl shrink-0">
+                            {/* Gambar dibuat elastis (flex-1) agar otomatis menyesuaikan layar HP kecil */}
+                            <div className="relative aspect-[3/4] w-full max-w-[240px] xs:max-w-[270px] sm:max-w-sm lg:max-w-[280px] bg-[#131B2E] border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
                                 <Image
                                     src={allImages[currentImageIndex]}
                                     alt={account.title}
@@ -181,15 +182,15 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
                                 />
 
                                 {isSold && (
-                                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-20 flex items-center justify-center">
-                                        <span className="bg-rose-950/90 text-rose-300 font-black text-xs sm:text-sm px-4 py-2 rounded-full border border-rose-500/50 tracking-widest uppercase">
+                                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm z-20 flex items-center justify-center p-2 text-center">
+                                        <span className="bg-rose-950/90 text-rose-300 font-black text-[10px] xs:text-xs sm:text-sm px-3 py-1.5 rounded-full border border-rose-500/50 tracking-widest uppercase">
                                             AKUN SUDAH TERJUAL
                                         </span>
                                     </div>
                                 )}
 
                                 {allImages.length > 1 && (
-                                    <div className="absolute bottom-3 right-3 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-md border border-slate-800 text-xs font-mono text-cyan-400 z-10">
+                                    <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 bg-slate-950/80 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md border border-slate-800 text-[10px] sm:text-xs font-mono text-cyan-400 z-10">
                                         {currentImageIndex + 1} / {allImages.length}
                                     </div>
                                 )}
@@ -198,61 +199,61 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
                             {allImages.length > 1 ? (
                                 <button
                                     onClick={nextImage}
-                                    className="p-2 sm:p-3 text-white hover:text-cyan-400 transition-colors shrink-0"
+                                    className="p-1.5 sm:p-3 text-white hover:text-cyan-400 transition-colors shrink-0"
                                     aria-label="Next Image"
                                 >
-                                    <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10" />
+                                    <ChevronRight className="w-6 h-6 sm:w-10 sm:h-10" />
                                 </button>
                             ) : (
-                                <div className="w-8 sm:w-10 shrink-0" />
+                                <div className="w-6 sm:w-10 shrink-0" />
                             )}
                         </div>
 
                         {/* Header Info Akun */}
-                        <div className="bg-[#131B2E] border border-slate-800 p-4 sm:p-5 rounded-2xl shadow-lg space-y-2">
+                        <div className="bg-[#131B2E] border border-slate-800 p-4 sm:p-5 rounded-2xl shadow-lg space-y-2 w-full">
                             <p className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
                                 {account.category || 'MLBB'}
                             </p>
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                                <h1 className="text-lg sm:text-xl font-extrabold text-white uppercase tracking-wide">
+                                <h1 className="text-base sm:text-xl font-extrabold text-white uppercase tracking-wide break-words">
                                     {account.title}
                                 </h1>
-                                <span className="text-xl sm:text-2xl font-black text-cyan-400 shrink-0">
+                                <span className="text-lg sm:text-2xl font-black text-cyan-400 shrink-0">
                                     {formattedPrice}
                                 </span>
                             </div>
                         </div>
 
                         {/* Statistik Hero, Skin & Rank */}
-                        <div className="bg-[#131B2E] border border-slate-800 rounded-2xl p-4 grid grid-cols-3 divide-x divide-slate-800 text-center shadow-lg">
-                            <div className="px-2">
-                                <p className="text-xs text-slate-400 font-medium mb-1">Hero</p>
-                                <p className="text-base sm:text-lg font-black text-cyan-400">
+                        <div className="bg-[#131B2E] border border-slate-800 rounded-2xl p-4 grid grid-cols-3 divide-x divide-slate-800 text-center shadow-lg w-full">
+                            <div className="px-1 sm:px-2">
+                                <p className="text-[10px] sm:text-xs text-slate-400 font-medium mb-1">Hero</p>
+                                <p className="text-sm sm:text-lg font-black text-cyan-400">
                                     {account.hero_count || '-'}
                                 </p>
                             </div>
-                            <div className="px-2">
-                                <p className="text-xs text-slate-400 font-medium mb-1">Skin</p>
-                                <p className="text-base sm:text-lg font-black text-cyan-400">
+                            <div className="px-1 sm:px-2">
+                                <p className="text-[10px] sm:text-xs text-slate-400 font-medium mb-1">Skin</p>
+                                <p className="text-sm sm:text-lg font-black text-cyan-400">
                                     {account.skin_count || '-'}
                                 </p>
                             </div>
-                            <div className="px-2">
-                                <p className="text-xs text-slate-400 font-medium mb-1">High Rank</p>
-                                <p className="text-base sm:text-lg font-black text-white uppercase">
+                            <div className="px-1 sm:px-2">
+                                <p className="text-[10px] sm:text-xs text-slate-400 font-medium mb-1">High Rank</p>
+                                <p className="text-xs sm:text-lg font-black text-white uppercase truncate">
                                     {account.rank || '-'}
                                 </p>
                             </div>
                         </div>
 
                         {/* Deskripsi Produk */}
-                        <div className="bg-[#131B2E] border border-slate-800 p-5 rounded-2xl shadow-lg space-y-3">
+                        <div className="bg-[#131B2E] border border-slate-800 p-4 sm:p-5 rounded-2xl shadow-lg space-y-3 w-full">
                             <h2 className="text-base sm:text-lg font-bold text-white border-b border-slate-800 pb-3">
                                 Deskripsi Produk
                             </h2>
 
                             <div className="space-y-1.5 text-xs sm:text-sm text-slate-300">
-                                <p>
+                                <p className="break-words">
                                     <span className="font-semibold text-slate-400">Warranty : </span>
                                     <span className="text-cyan-400 font-bold uppercase">
                                         {account.warranty || 'REFF PLAYER (FULL GARANSI TETSUMARKET)'}
@@ -265,7 +266,7 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
                             </div>
 
                             {account.description && (
-                                <div className="pt-2 border-t border-slate-800/60 text-xs sm:text-sm text-slate-200 leading-relaxed font-mono whitespace-pre-line">
+                                <div className="pt-2 border-t border-slate-800/60 text-xs sm:text-sm text-slate-200 leading-relaxed font-mono whitespace-pre-line break-words">
                                     {account.description}
                                 </div>
                             )}
@@ -273,9 +274,9 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
 
                     </div>
 
-                    {/* KELOMPOK 2: Tahapan Rekber & Catatan Penting (Order 2 di HP, Kolom Kiri di PC) */}
-                    <div className="order-2 lg:order-1 lg:col-span-5 lg:col-start-1">
-                        <div className="bg-[#131B2E] border border-slate-800 rounded-2xl p-5 sm:p-6 lg:p-5 shadow-lg space-y-5 sm:space-y-6 lg:space-y-4">
+                    {/* KELOMPOK 2: Tahapan Rekber & Catatan Penting */}
+                    <div className="order-2 lg:order-1 lg:col-span-5 lg:col-start-1 w-full min-w-0">
+                        <div className="bg-[#131B2E] border border-slate-800 rounded-2xl p-4 sm:p-6 lg:p-5 shadow-lg space-y-5 sm:space-y-6 lg:space-y-4 w-full">
                             
                             {/* Tahapan Rekber */}
                             <div>
@@ -309,8 +310,8 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
                         </div>
                     </div>
 
-                    {/* KELOMPOK 3: Tombol WhatsApp (Order 3 di HP -> Di bawah Rekber, Kanan Bawah di PC) */}
-                    <div className="order-3 lg:order-3 lg:col-span-7 lg:col-start-6">
+                    {/* KELOMPOK 3: Tombol WhatsApp */}
+                    <div className="order-3 lg:order-3 lg:col-span-7 lg:col-start-6 w-full min-w-0">
                         {isSold ? (
                             <button 
                                 disabled 
@@ -325,7 +326,7 @@ export default function AccountDetailPage({ params }: { params: Promise<{ id: st
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2.5 w-full bg-[#00FF66] hover:bg-[#00E65C] text-slate-950 font-black py-4 px-6 rounded-2xl shadow-xl shadow-[#00FF66]/20 transition-all text-sm sm:text-base uppercase tracking-wide"
                             >
-                                <MessageSquare className="w-5 h-5 fill-current" />
+                                <MessageSquare className="w-5 h-5 fill-current shrink-0" />
                                 <span>Beli Sekarang via WhatsApp Admin</span>
                             </a>
                         )}
